@@ -3,6 +3,7 @@ import altair as alt
 import math
 import pandas as pd
 import streamlit as st
+pip install yahoo_fin
 
 """
 # überStocks

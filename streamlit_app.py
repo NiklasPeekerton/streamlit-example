@@ -25,13 +25,14 @@ from yahoo_fin import stock_info as si
 
 
 # get list of Dow tickers
-@st.cache
+
 dow_list = si.tickers_dow()
 #sp_list = si.tickers_sp500()
 
 # et data in the current column for each stock's valuation table
 dow_stats = {}
 for ticker in dow_list:
+    @st.experimental_memo
     temp = si.get_stats_valuation(ticker)
     temp = temp.iloc[:,:2]
     temp.columns = ["Attribute", "Recent"]

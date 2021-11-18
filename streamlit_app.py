@@ -23,11 +23,12 @@ df = pd.DataFrame({
 
 from yahoo_fin import stock_info as si
 
-@st.cache
+
 # get list of Dow tickers
+@st.cache
 dow_list = si.tickers_dow()
 #sp_list = si.tickers_sp500()
- @st.cache
+
 # et data in the current column for each stock's valuation table
 dow_stats = {}
 for ticker in dow_list:

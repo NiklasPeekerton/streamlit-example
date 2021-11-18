@@ -32,7 +32,6 @@ dow_list = si.tickers_dow()
 # et data in the current column for each stock's valuation table
 dow_stats = {}
 for ticker in dow_list:
-    @st.experimental_memo
     temp = si.get_stats_valuation(ticker)
     temp = temp.iloc[:,:2]
     temp.columns = ["Attribute", "Recent"]
@@ -50,5 +49,6 @@ del combined_stats["level_1"]
 combined_stats.columns = ["Ticker", "Attribute", "Recent"]
 
 # get P/E ratio for each stock
+@st.experimental_memo
 dow_pe = combined_stats[combined_stats.Attribute.str.contains("Trailing P/E")]
 dow_pe

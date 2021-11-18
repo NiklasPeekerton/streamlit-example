@@ -44,5 +44,36 @@ combined_stats.columns = ["Ticker", "Attribute", "Recent"]
 # get P/E ratio for each stock
 
 dow_pe = combined_stats[combined_stats.Attribute.str.contains("Trailing P/E")]
-dow_pe.sort_values(by='Recent', key=abs)
+dow_pe
+
+
+"""
+# S&P 500 NCAV
+These are stocks listed on S&P 500 with their NCAV:
+"""
+
+sp_list = si.tickers_sp500()
+dow_list = si.tickers_dow()
+
+sp_stats = {} 
+BalanceSheets = {}
+
+allstats = []
+
+for ticker in dow_list:
+    temp = si.get_quote_data(ticker)
+    sheet = si.get_balance_sheet(ticker)
+    sp_stats[ticker] = temp
+    BalanceSheets[ticker] = sheet
+
+
+    try:
+        allstats.append([ticker, BalanceSheets[ticker].loc['totalLiab'][0], BalanceSheets[ticker].loc['totalCurrentAssets'][0],
+                        sp_stats[ticker]['regularMarketPrice'], sp_stats[ticker]['sharesOutstanding']])
+    except:
+        print(ticker)
+
+
+allstatsdf = pd.DataFrame(allstats, columns=['Ticker','TotalLiabilities','CurrentAssets','Market Price', 'Shares Outstanding'])
+allstatsdf
 

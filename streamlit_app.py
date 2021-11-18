@@ -42,7 +42,7 @@ del combined_stats["level_1"]
 combined_stats.columns = ["Ticker", "Attribute", "Recent"]
 
 # get P/E ratio for each stock
-@st.experimental_memo
+
 dow_pe = combined_stats[combined_stats.Attribute.str.contains("Trailing P/E")]
 dow_pe.sort_values(by='Recent', key=abs)
 

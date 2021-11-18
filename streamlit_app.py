@@ -51,6 +51,7 @@ for ticker in dow_list:
     except:
         print(ticker)
 
-allstats
+allstatsdf = pd.DataFrame(allstats, columns=['Ticker','TotalLiabilities','CurrentAssets','Market Price', 'Shares Outstanding'])
+allstatsdf
 
 

@@ -3,6 +3,7 @@ import altair as alt
 import math
 import pandas as pd
 import streamlit as st
+from yahoo_fin import stock_info as si
 
 """
 # überStocks
@@ -14,14 +15,6 @@ import streamlit as st
 # Dow Jones PE values
 These are stocks listed on Dow Jones sorted by PE:
 """
-
-import pandas as pd
-df = pd.DataFrame({
-  'first column': [1, 2, 3, 4],
-  'second column': [10, 20, 30, 40]
-})
-
-from yahoo_fin import stock_info as si
 
 
 # get list of Dow tickers
@@ -51,4 +44,5 @@ combined_stats.columns = ["Ticker", "Attribute", "Recent"]
 # get P/E ratio for each stock
 @st.experimental_memo
 dow_pe = combined_stats[combined_stats.Attribute.str.contains("Trailing P/E")]
-dow_pe
+dow_pe.sort_values(by='Recent', key=abs)
+

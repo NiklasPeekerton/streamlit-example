@@ -12,7 +12,7 @@ Dividends = {}
 Earnings = {}
 
 #Fetches data. Cache somehow?
-@st.cache
+#@ st.cache
 for ticker in tqdm(dow_list):
     try:
         fin = si.get_financials(ticker)

@@ -2,6 +2,7 @@
 from yahoo_fin import stock_info as si
 from tqdm.notebook import trange, tqdm
 import pickle
+import streamlit as st
 
 sp_list = si.tickers_sp500()
 dow_list = si.tickers_dow()
@@ -12,7 +13,7 @@ Dividends = {}
 Earnings = {}
 
 #Fetches data. Cache somehow?
-#@ st.cache
+@st.cache
 for ticker in tqdm(dow_list):
     try:
         fin = si.get_financials(ticker)

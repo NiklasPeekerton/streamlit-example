@@ -65,7 +65,7 @@ import pickle
 sp_list = si.tickers_sp500()
 dow_list = si.tickers_dow()
 
-@st.cache
+#@st.cache
 def read_data():
     with open('Financials.pkl','rb') as read_file:
         Financialsj = pickle.load(read_file)

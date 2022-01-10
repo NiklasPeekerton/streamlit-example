@@ -15,33 +15,55 @@ Financials = {}
 Quote = {}
 Dividends = {}
 Earnings = {}
+#Dicts with Financial statements and Quote page from Yahoo finance
+from yahoo_fin import stock_info as si
+from tqdm.notebook import trange, tqdm
+import pickle
+
+sp_list = si.tickers_sp500()
+dow_list = si.tickers_dow()
+
+Financials = {}
+Quote = {}
+Dividends = {}
+Earnings = {}
 
 #Fetches data. Cache somehow?
-#@cache
-for ticker in tqdm(dow_list):
-    try:
-        fin = si.get_financials(ticker)
-        qut = si.get_quote_data(ticker)
-        div = si.get_dividends(ticker)
-        earn = si.get_earnings_history(ticker)
-        Financials[ticker] = fin
-        Quote[ticker] = qut
-        Dividends[ticker] = div
-        Earnings[ticker] = earn
-    except Exception as e:
-        print(ticker, e, 'contains sum bullshit')
+def fetch_data():
+    for ticker in tqdm(dow_list):
+        try:
+            fin = si.get_financials(ticker)
+            qut = si.get_quote_data(ticker)
+            div = si.get_dividends(ticker)
+            earn = si.get_earnings_history(ticker)
+            Financials[ticker] = fin
+            Quote[ticker] = qut
+            Dividends[ticker] = div
+            Earnings[ticker] = earn
+        except Exception as e:
+            print(ticker, e, 'contains sum bullshit')
 
-with open('Financials.pkl', 'wb') as f:
-    pickle.dump(Financials, f)
+    with open('Financials.pkl', 'wb') as f:
+        pickle.dump(Financials, f)
 
-with open('Quote.pkl', 'wb') as f:
-    pickle.dump(Quote, f)
+    with open('Quote.pkl', 'wb') as f:
+        pickle.dump(Quote, f)
 
-with open('Dividends.pkl', 'wb') as f:
-    pickle.dump(Dividends, f)
+    with open('Dividends.pkl', 'wb') as f:
+        pickle.dump(Dividends, f)
 
-with open('Earnings.pkl', 'wb') as f:
-    pickle.dump(Earnings, f)
+    with open('Earnings.pkl', 'wb') as f:
+        pickle.dump(Earnings, f)
+    
+    return()
+
+fetch_data()
+
+clicky = st.button('Reload data')
+
+if clicky:
+    fetch_data()
+    st.write('Downloading data')
     
     
     
@@ -66,7 +88,6 @@ with open('Dividends.pkl','rb') as read_file:
 with open('Earnings.pkl','rb') as read_file:
     Earningsj = pickle.load(read_file)
 
-lista = ['AAPL','AMGN']
 keysIS = ['totalRevenue', 'netIncome', 'interestExpense']
 keysBS = ['totalLiab', 'totalCurrentAssets', 'totalCurrentLiabilities', 'longTermDebt', 'totalStockholderEquity', 'intangibleAssets', 'totalAssets']
 keysQ = ['longName', 'regularMarketPrice', 'trailingPE', 'sharesOutstanding', 'fiftyTwoWeekRange', 'epsTrailingTwelveMonths', 'bookValue', 'priceToBook', 'trailingAnnualDividendRate', 'trailingAnnualDividendYield']
@@ -74,7 +95,7 @@ keysQ = ['longName', 'regularMarketPrice', 'trailingPE', 'sharesOutstanding', 'f
 yearnow = pd.Timestamp.now().year
 
 haba = []
-#TL = Financials[ticker]['yearly_income_statement'].loc['totalRevenue'][0]
+
 
 for ticker in dow_list:
     try:

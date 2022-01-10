@@ -280,6 +280,12 @@ def read_data():
 
 read_data()
 
+clicky2 = st.button('Read data')
+
+if clicky2:
+    read_data()
+    st.write('Reading data')
+
 NCAV = habadf['Current Assets']-habadf['Total Liabilities']
 WC = habadf['Current Assets']-habadf['Current Liabilities']
 
@@ -331,8 +337,4 @@ newdf[['Ticker','Name','NormEarn/7*InterestPay']]
 
 
     
-clicky2 = st.button('Read data')
 
-if clicky2:
-    read_data()
-    st.write('Reading data')

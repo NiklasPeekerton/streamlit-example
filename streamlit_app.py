@@ -252,7 +252,7 @@ def read_data():
                                                  
                                                 ])
          #0.4 / ((Current P/E) / Highest P/E in the last 5 years.), I'll 4 for now instead
-        habadf['currhighPE'] = 0.4/((habadf['Trailing PE'])/(PEepssum.max()))
+        #habadf['currhighPE'] = 0.4/((habadf['Trailing PE'])/(PEepssum.max()))
 
 
 
@@ -276,7 +276,6 @@ def read_data():
         #20 / Trailing 12-month P/E
         habadf['twentydivPE'] = 20 / habadf['Trailing PE']
 
-    pd.set_option("display.max_rows", None, "display.max_columns", None)
     return()
 
 read_data()

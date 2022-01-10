@@ -206,4 +206,45 @@ for ticker in dow_list:
                                             ])
 
 pd.set_option("display.max_rows", None, "display.max_columns", None)
-habadf
+
+
+NCAV = habadf['Current Assets']-habadf['Total Liabilities']
+WC = habadf['Current Assets']-habadf['Current Liabilities']
+
+newdf = pd.DataFrame(habadf['Ticker'])
+newdf['Name'] = habadf['Name']
+newdf['Trailing PE'] = habadf['Trailing PE']
+newdf['NCAV'] = NCAV
+newdf['NCAVPS'] = (NCAV)/(habadf['Shares Outstanding'])
+newdf['0,66/NCAVPS/Price'] = 0.66/(habadf['Market Price']/newdf['NCAVPS'])
+newdf['Book Value per share'] = habadf['Book Value']/habadf['Shares Outstanding']
+newdf['CurAss/2*CurLiab'] = habadf['Current Assets']/(2*habadf['Current Liabilities'])
+newdf['NCAV/TotDebt/1.1'] = (NCAV/habadf['Total Liabilities'])/1.1
+newdf['NormEarn/7*InterestPay'] = habadf['Normalized earnings']/(7*-habadf['Interest expense'])
+newdf['AllAss-AllLiab/AllLiab'] = (habadf['Total assets']-habadf['Total Liabilities'])/habadf['Total Liabilities']
+newdf['Working capital / Long Term (non-current) debt'] = WC / habadf['Long Term Debt']
+newdf['Years since most recent loss /5'] = habadf['Years since loss']/5
+newdf['Total Revenue / 500M'] = habadf['TotalRevenue']/500000000
+newdf['Total Revenue / Mean'] = habadf['TotalRevenue']/habadf['TotalRevenue'].mean()
+newdf['MA/(P/E)'] = habadf['Trailing PE'].mean()/habadf['Trailing PE']
+newdf['Grahams number'] = (22.5/(habadf['Trailing PE']*habadf['Price to Book']))
+newdf['(4 - [Number of last 4 years with an earnings decline]) / 4'] = (4-habadf['Years of earnings decline'])/4
+#newdf['Normalized 3-year per share earnings / [largest decline of the past 10 years]'] = DONE
+#([Normalized earnings from the last 3 years] / [Same from 10 years earlier]) / 1.3, DONE
+#10-year earnings CAGR / 0.07, DONE
+#"[Normalized Earnings / Normalized Revenue for last 3 years] / [1.5 * Same from 10 years earlier]" CAN'T DO
+newdf['Earnings to price yield / [2 * AAA bond rate]'] = (habadf['EPS TTM']/habadf['Market Price'])/(2*0.0261)
+newdf['Earnings / Revenue / 0.1'] = (habadf['Net Income']/habadf['TotalRevenue'])/0.1
+#3-Year Normalized: Earnings-per-share / Book Value per share, DONE (but shares outstanding is just for last year)
+#newdf['Dividend?'] = habadf['Trailing Annual Dividend Rate'] >0 == True
+newdf['Total uninterrupted years with dividend/10'] = habadf['Years of uninterrupted dividends']/10
+newdf['Dividend CAGR past 20y'] = habadf['Dividend CAGR past 20y']
+newdf['Dividend Yield / 0.02'] = habadf['Trailing Annual Dividend Yield']/0.02
+newdf['AAA bond yield / 1.5 x Dividend Yield'] = 0.0261 / (1.5*habadf['Trailing Annual Dividend Yield'])
+#([Payout/Earnings] / Dividend Yield) / 25, DONE
+newdf['15 / (P/E)'] = 15/habadf['Trailing PE']
+#0.4 / ((Current P/E) / Highest P/E in the last 5 years.)
+
+newdf
+
+

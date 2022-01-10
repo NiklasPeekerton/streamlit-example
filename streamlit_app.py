@@ -203,7 +203,7 @@ def read_data():
             #Earndf
 
             #[Highest P/E] / [lowest P/E] (considering the past 4 years)
-            highlowPE = PEepssum.max()/PEepssum.min()
+            #highlowPE = PEepssum.max()/PEepssum.min()
             
 
 
@@ -214,7 +214,7 @@ def read_data():
         haba.append([ticker,LN, MP, PE, SO, FL, FH, ETTM, BV, PB, ADR, ADY, 
                      TR, NR, NR3, NI, NE, NE3, IE, TL, TCA, TCL, LTD, TSE, IA, 
                      TA, dayzz, NegEC, DCAGR, Divyears, norm3decline10,
-                    EPS3BVPS3, PEDY25, highlowPE])
+                    EPS3BVPS3, PEDY25])
 
         habadf = pd.DataFrame(haba, columns= ['Ticker',
                                                  'Name',
@@ -248,8 +248,8 @@ def read_data():
                                                  'Years of uninterrupted dividends',
                                                  'Normalized 3-year per share earnings / [largest decline of the past 10 years]',
                                                  '3-Year Normalized: Earnings-per-share / Book Value per share',
-                                                 '([Payout/Earnings] / Dividend Yield) / 25',
-                                                 '[Highest P/E] / [lowest P/E] (considering the past 4 years)'
+                                                 '([Payout/Earnings] / Dividend Yield) / 25'
+                                                 
                                                 ])
          #0.4 / ((Current P/E) / Highest P/E in the last 5 years.), I'll 4 for now instead
         habadf['currhighPE'] = 0.4/((habadf['Trailing PE'])/(PEepssum.max()))

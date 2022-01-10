@@ -276,7 +276,7 @@ def read_data():
         #20 / Trailing 12-month P/E
         habadf['twentydivPE'] = 20 / habadf['Trailing PE']
 
-    return()
+    return(habadf)
 
 read_data()
 

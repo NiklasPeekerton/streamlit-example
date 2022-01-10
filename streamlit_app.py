@@ -257,7 +257,7 @@ newdf['Grahams number']
 
 
 st.title('Financial situation')
-newdf['CurAss/2*CurLiab']
-newdf['NCAV/TotDebt/1.1']
-newdf['NormEarn/7*InterestPay']
+newdf[['Ticker','Name','CurAss/2*CurLiab']]
+newdf[['Ticker','Name','NCAV/TotDebt/1.1']]
+newdf[['Ticker','Name','NormEarn/7*InterestPay']]
 

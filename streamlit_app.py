@@ -58,7 +58,6 @@ def fetch_data():
     
     return()
 
-fetch_data()
 
 clicky = st.button('Reload data')
 

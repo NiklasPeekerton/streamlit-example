@@ -65,6 +65,11 @@ if clicky:
     fetch_data()
     st.write('Downloading data')
     
+clicky2 = st.button('Read data')
+
+if clicky2:
+    read_data()
+    st.write('Reading data')
     
     
     
@@ -290,7 +295,7 @@ def read_data():
     pd.set_option("display.max_rows", None, "display.max_columns", None)
     return(habadf)
 
-read_data()
+
 
 NCAV = habadf['Current Assets']-habadf['Total Liabilities']
 WC = habadf['Current Assets']-habadf['Current Liabilities']

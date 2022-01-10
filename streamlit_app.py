@@ -59,17 +59,7 @@ def fetch_data():
     return()
 
 
-clicky = st.button('Fetch data')
 
-if clicky:
-    fetch_data()
-    st.write('Downloading data')
-    
-clicky2 = st.button('Read data')
-
-if clicky2:
-    read_data()
-    st.write('Reading data')
     
     
     
@@ -346,3 +336,14 @@ newdf[['Ticker','Name','CurAss/2*CurLiab']]
 newdf[['Ticker','Name','NCAV/TotDebt/1.1']]
 newdf[['Ticker','Name','NormEarn/7*InterestPay']]
 
+clicky = st.button('Fetch data')
+
+if clicky:
+    fetch_data()
+    st.write('Downloading data')
+    
+clicky2 = st.button('Read data')
+
+if clicky2:
+    read_data()
+    st.write('Reading data')

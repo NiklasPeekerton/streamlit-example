@@ -15,18 +15,8 @@ Financials = {}
 Quote = {}
 Dividends = {}
 Earnings = {}
-#Dicts with Financial statements and Quote page from Yahoo finance
-from yahoo_fin import stock_info as si
-from tqdm.notebook import trange, tqdm
-import pickle
 
-sp_list = si.tickers_sp500()
-dow_list = si.tickers_dow()
-
-Financials = {}
-Quote = {}
-Dividends = {}
-Earnings = {}
+haba = []
 
 #Fetches data. Cache somehow?
 

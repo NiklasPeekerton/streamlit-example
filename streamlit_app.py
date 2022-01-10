@@ -29,7 +29,7 @@ Dividends = {}
 Earnings = {}
 
 #Fetches data. Cache somehow?
-@st.cache
+
 def fetch_data():
     for ticker in tqdm(dow_list):
         try:
@@ -77,162 +77,219 @@ import pickle
 sp_list = si.tickers_sp500()
 dow_list = si.tickers_dow()
 
-with open('Financials.pkl','rb') as read_file:
-    Financialsj = pickle.load(read_file)
+@st.cache
+def read_data():
+    with open('Financials.pkl','rb') as read_file:
+        Financialsj = pickle.load(read_file)
 
-with open('Quote.pkl','rb') as read_file:
-    Quotej = pickle.load(read_file)
-    
-with open('Dividends.pkl','rb') as read_file:
-    Dividendsj = pickle.load(read_file)
+    with open('Quote.pkl','rb') as read_file:
+        Quotej = pickle.load(read_file)
 
-with open('Earnings.pkl','rb') as read_file:
-    Earningsj = pickle.load(read_file)
+    with open('Dividends.pkl','rb') as read_file:
+        Dividendsj = pickle.load(read_file)
 
-keysIS = ['totalRevenue', 'netIncome', 'interestExpense']
-keysBS = ['totalLiab', 'totalCurrentAssets', 'totalCurrentLiabilities', 'longTermDebt', 'totalStockholderEquity', 'intangibleAssets', 'totalAssets']
-keysQ = ['longName', 'regularMarketPrice', 'trailingPE', 'sharesOutstanding', 'fiftyTwoWeekRange', 'epsTrailingTwelveMonths', 'bookValue', 'priceToBook', 'trailingAnnualDividendRate', 'trailingAnnualDividendYield']
+    with open('Earnings.pkl','rb') as read_file:
+        Earningsj = pickle.load(read_file)
 
-yearnow = pd.Timestamp.now().year
+    keysIS = ['totalRevenue', 'netIncome', 'interestExpense']
+    keysBS = ['totalLiab', 'totalCurrentAssets', 'totalCurrentLiabilities', 'longTermDebt', 'totalStockholderEquity', 'intangibleAssets', 'totalAssets']
+    keysQ = ['longName', 'regularMarketPrice', 'trailingPE', 'sharesOutstanding', 'fiftyTwoWeekRange', 'epsTrailingTwelveMonths', 'bookValue', 'priceToBook', 'trailingAnnualDividendRate', 'trailingAnnualDividendYield']
 
-haba = []
+    yearnow = pd.Timestamp.now().year
+    for ticker in dow_list:
+        try:
+            IncomeStatement = Financialsj[ticker]['yearly_income_statement']
+            ist = IncomeStatement.reindex(keysIS)
+            BalanceSheet = Financialsj[ticker]['yearly_balance_sheet']
+            bs = BalanceSheet.reindex(keysBS)
+            TR = ist.loc['totalRevenue'][0]
+            NR = ist.loc['totalRevenue'].mean(skipna = True)
+            NR3 = ist.loc['totalRevenue'][:3].mean(skipna = True)
+            NI = ist.loc['netIncome'][0]
+            NE = ist.loc['netIncome'].mean(skipna = True)
+            NE3 = ist.loc['netIncome'][:3].mean(skipna = True)
+            IE = ist.loc['interestExpense'][0]
+
+            TL = bs.loc['totalLiab'][0]
+            TL3 = bs.loc['totalLiab'][:3]
+            TCA = bs.loc['totalCurrentAssets'][0]
+            TCL = bs.loc['totalCurrentLiabilities'][0]
+            LTD = bs.loc['longTermDebt'][0]
+            TSE = bs.loc['totalStockholderEquity'][0]
+            IA = bs.loc['intangibleAssets'][0]
+            TA = bs.loc['totalAssets'][0]
+            TA3 = bs.loc['totalAssets'][:3]
+
+            LN = Quotej.get(ticker).get('longName')
+            MP = Quotej.get(ticker).get('regularMarketPrice')
+            PE = Quotej.get(ticker).get('trailingPE')
+            SO = Quotej.get(ticker).get('sharesOutstanding')
+            FL = Quotej.get(ticker).get('fiftyTwoWeekLow')
+            FH = Quotej.get(ticker).get('fiftyTwoWeekHigh')
+            ETTM = Quotej.get(ticker).get('epsTrailingTwelveMonths')
+            BV = Quotej.get(ticker).get('bookValue')
+            PB = Quotej.get(ticker).get('priceToBook')
+            ADR = Quotej.get(ticker).get('trailingAnnualDividendRate')
+            ADY = Quotej.get(ticker).get('trailingAnnualDividendYield')
+
+            #Years since last loss
+            dayz = ist.loc['netIncome']
+            dayztest = np.any(ist.loc['netIncome'] <0)
+            if dayztest == True:
+                dayzz = yearnow - dayz.index[dayz <0].year[0]
+            else:
+                dayzz = None
+
+            #Years of earnings decline
+            NegEarn = dayz.diff(periods=-1)
+            NegEC = np.sum((NegEarn < 0).values.ravel())
+
+            #Dividend CAGR & years of uninterrupted dividends
+            div = Dividendsj[ticker]
+            if div.empty:
+                print(ticker, 'Has never had dividends')
+                DCAGR = None
+            elif div.index.year[-1] == 2021:
+                a = div.groupby(div.index.year).sum()
+                since2001 = a.loc[2001:]
+                DCAGR = ((((since2001.iloc[-1]/since2001.iloc[0])**(1/len(since2001.index))-1)*100)+1)[0]
+
+                data= a.index
+                df=pd.DataFrame(data,columns=['col1'])
+                df['match'] = df.col1.eq(df.col1.shift()+1).astype(int)
+
+                #count recent number of years of uninterrupted dividends
+                Divyears = 0
+                divi = df['match']
+                divi = list(divi)[::-1]
+
+                for div in divi:
+                    if div == 1:
+                        Divyears +=1
+                    else:
+                        break
+            else:
+                DCAGR = None
+                Divyears = None
+                #print(DCAGR)
+                #print(ticker, 'Currently no dividends')
+                
+            eps = []
+
+            for ep in Earningsj[ticker]:
+                date = ep['startdatetime']
+                ticker = ep['ticker']
+                epsactual = ep['epsactual']
+                #eps.append([blu['startdatetime'],blu['epsactual']])
+                #eps.append([blu['epsactual']])
+                #print(blu['startdatetime'][:4])
+                #print(blu['epsactual'])
+                eps.append([ticker,date,epsactual])
+
+            Earndf = pd.DataFrame(eps, columns=['Ticker','Date','EPS'])
+            #EPS CAGR for the past 10 years
+            Earndf['Date'] = pd.to_datetime(Earndf['Date'])
+            Earndf['Date'] = Earndf['Date'].dt.year
+            avgeps = Earndf.groupby('Date').mean().dropna()
+            avgeps10 = avgeps.iloc[-10:]
+            ECAGR = ((((avgeps10.iloc[-1]/avgeps10.iloc[0])**(1/len(avgeps10.index))-1)*100))[0]
+            ECAGR7 = ECAGR/0.07
+            #avgeps10.iloc[-1]
 
 
-for ticker in dow_list:
-    try:
-        IncomeStatement = Financialsj[ticker]['yearly_income_statement']
-        ist = IncomeStatement.reindex(keysIS)
-        BalanceSheet = Financialsj[ticker]['yearly_balance_sheet']
-        bs = BalanceSheet.reindex(keysBS)
-        TR = ist.loc['totalRevenue'][0]
-        NR = ist.loc['totalRevenue'].mean(skipna = True)
-        NR3 = ist.loc['totalRevenue'][:3].mean(skipna = True)
-        NI = ist.loc['netIncome'][0]
-        NE = ist.loc['netIncome'].mean(skipna = True)
-        NE3 = ist.loc['netIncome'][:3].mean(skipna = True)
-        IE = ist.loc['interestExpense'][0]
-    
-        TL = bs.loc['totalLiab'][0]
-        TL3 = bs.loc['totalLiab'][:3]
-        TCA = bs.loc['totalCurrentAssets'][0]
-        TCL = bs.loc['totalCurrentLiabilities'][0]
-        LTD = bs.loc['longTermDebt'][0]
-        TSE = bs.loc['totalStockholderEquity'][0]
-        IA = bs.loc['intangibleAssets'][0]
-        TA = bs.loc['totalAssets'][0]
-        TA3 = bs.loc['totalAssets'][:3]
-    
-        LN = Quotej.get(ticker).get('longName')
-        MP = Quotej.get(ticker).get('regularMarketPrice')
-        PE = Quotej.get(ticker).get('trailingPE')
-        SO = Quotej.get(ticker).get('sharesOutstanding')
-        FL = Quotej.get(ticker).get('fiftyTwoWeekLow')
-        FH = Quotej.get(ticker).get('fiftyTwoWeekHigh')
-        ETTM = Quotej.get(ticker).get('epsTrailingTwelveMonths')
-        BV = Quotej.get(ticker).get('bookValue')
-        PB = Quotej.get(ticker).get('priceToBook')
-        ADR = Quotej.get(ticker).get('trailingAnnualDividendRate')
-        ADY = Quotej.get(ticker).get('trailingAnnualDividendYield')
+            #([Normalized earnings from the last 3 years] / [Same from 10 years earlier]) / 1.3
+            avgeps3norm = avgeps.iloc[-3:].mean()[0]
+            avgeps10norm = avgeps.iloc[-13:-10].mean()[0]
+            normeps310 = avgeps3norm / avgeps10norm /1.3
+            #'Normalized 3-year per share earnings / [largest decline of the past 10 years]
+            norm3decline10 = avgeps3norm / avgeps10.diff().min()[0]
+            
+            #3-Year Normalized: Earnings-per-share / Book Value per share
+            #avgeps3norm
+            BVPS = (TA3-TL3).mean()/SO
+            EPS3BVPS3 = avgeps3norm/ BVPS
+            #EPS3BVPS3
+
+            #([Payout/Earnings] / Dividend Yield) / 25
+            PEDY25 = ((ADR/ETTM)/ADY)/25
+            #Earndf
+
+            #[Highest P/E] / [lowest P/E] (considering the past 4 years)
+            highlowPE = PEepssum.max()/PEepssum.min()
+            
+
+
+        except Exception as e:
+            print(ticker, e)
+
+
+        haba.append([ticker,LN, MP, PE, SO, FL, FH, ETTM, BV, PB, ADR, ADY, 
+                     TR, NR, NR3, NI, NE, NE3, IE, TL, TCA, TCL, LTD, TSE, IA, 
+                     TA, dayzz, NegEC, DCAGR, Divyears, norm3decline10,
+                    EPS3BVPS3, PEDY25, highlowPE])
+
+        habadf = pd.DataFrame(haba, columns= ['Ticker',
+                                                 'Name',
+                                                 'Market Price',
+                                                 'Trailing PE',
+                                                 'Shares Outstanding',
+                                                 'Fifty Two Week Low',
+                                                 'Fifty Two Week High',
+                                                 'EPS TTM',
+                                                 'Book Value',
+                                                 'Price to Book',
+                                                 'Trailing Annual Dividend Rate',
+                                                 'Trailing Annual Dividend Yield',
+                                                 'TotalRevenue',
+                                                 'Normalized revenue',
+                                                 'Normalized revenue 3 years',
+                                                 'Net Income',
+                                                 'Normalized earnings',
+                                                 'Normalized earnings 3 years',
+                                                 'Interest expense',
+                                                 'Total assets',
+                                                 'Total Liabilities',
+                                                 'Current Assets',
+                                                 'Current Liabilities',
+                                                 'Long Term Debt',
+                                                 'Total Stockholder Equity',
+                                                 'Intangible Assets',
+                                                 'Years since loss',
+                                                 'Years of earnings decline',
+                                                 'Dividend CAGR past 20y',
+                                                 'Years of uninterrupted dividends',
+                                                 'Normalized 3-year per share earnings / [largest decline of the past 10 years]',
+                                                 '3-Year Normalized: Earnings-per-share / Book Value per share',
+                                                 '([Payout/Earnings] / Dividend Yield) / 25',
+                                                 '[Highest P/E] / [lowest P/E] (considering the past 4 years)'
+                                                ])
+         #0.4 / ((Current P/E) / Highest P/E in the last 5 years.), I'll 4 for now instead
+        habadf['currhighPE'] = 0.4/((habadf['Trailing PE'])/(PEepssum.max()))
+
+
+
+        #Unweighted Earning Power	(1 + (10-Year Earnings CAGR + Dividend Yield) - AAA Bond Rate)
+
+
+        #7-Year Projected Earnings	(EPS * (Earning Power ^ 7))
+
+
+        #Book Value/Total Debt	(All assets - intangible assets - all liabilities - par value of senior issues) / Total Debt
+        habadf['BVTB'] = habadf['Book Value']/habadf['Total Liabilities']
+
         
-        #Years since last loss
-        dayz = ist.loc['netIncome']
-        dayztest = np.any(ist.loc['netIncome'] <0)
-        if dayztest == True:
-            dayzz = yearnow - dayz.index[dayz <0].year[0]
-        else:
-            dayzz = None
-            
-        #Years of earnings decline
-        NegEarn = dayz.diff(periods=-1)
-        NegEC = np.sum((NegEarn < 0).values.ravel())
-        
-        #Dividend CAGR & years of uninterrupted dividends
-        div = Dividendsj[ticker]
-        if div.empty:
-            print(ticker, 'Has never had dividends')
-            DCAGR = None
-        elif div.index.year[-1] == 2021:
-            a = div.groupby(div.index.year).sum()
-            since2001 = a.loc[2001:]
-            DCAGR = ((((since2001.iloc[-1]/since2001.iloc[0])**(1/len(since2001.index))-1)*100)+1)[0]
-            
-            data= a.index
-            df=pd.DataFrame(data,columns=['col1'])
-            df['match'] = df.col1.eq(df.col1.shift()+1).astype(int)
 
-            #count recent number of years of uninterrupted dividends
-            Divyears = 0
-            divi = df['match']
-            divi = list(divi)[::-1]
+        # (52WeekHigh - Current) / (Current - 52WeekLow)
+        habadf['yearlowhigh'] = (habadf['Fifty Two Week High']-habadf['Market Price'])/(habadf['Market Price']-habadf['Fifty Two Week Low'])
 
-            for div in divi:
-                if div == 1:
-                    Divyears +=1
-                else:
-                    break
-        else:
-            DCAGR = None
-            Divyears = None
-            #print(DCAGR)
-            print(ticker, 'Currently no dividends')
-            
-        #Uninterrupted years of dividend
-        #data= a.index
-        #df=pd.DataFrame(data,columns=['col1'])
-        #df['match'] = df.col1.eq(df.col1.shift()+1).astype(int)
+        #25 / 7-year average P/E
 
-        #count recent number of years of uninterrupted dividends
-        #Divyears = 0
-        #divi = df['match']
-        #divi = list(divi)[::-1]
 
-        #for div in divi:
-         #   if div == 1:
-                #Divyears +=1
-         #   else:
-          #      break
-        #print(ticker, count)
+        #20 / Trailing 12-month P/E
+        habadf['twentydivPE'] = 20 / habadf['Trailing PE']
 
-    except Exception as e:
-        print(ticker, e)
-
-    
-    haba.append([ticker,LN, MP, PE, SO, FL, FH, ETTM, BV, PB, ADR, ADY, TR, NR, NR3, NI, NE, NE3, IE, TL, TCA, TCL, LTD, TSE, IA, TA, dayzz, NegEC, DCAGR, Divyears])
-    
-    habadf = pd.DataFrame(haba, columns= ['Ticker',
-                                             'Name',
-                                             'Market Price',
-                                             'Trailing PE',
-                                             'Shares Outstanding',
-                                             'Fifty Two Week Low',
-                                             'Fifty Two Week High',
-                                             'EPS TTM',
-                                             'Book Value',
-                                             'Price to Book',
-                                             'Trailing Annual Dividend Rate',
-                                             'Trailing Annual Dividend Yield',
-                                             'TotalRevenue',
-                                             'Normalized revenue',
-                                             'Normalized revenue 3 years',
-                                             'Net Income',
-                                             'Normalized earnings',
-                                             'Normalized earnings 3 years',
-                                             'Interest expense',
-                                             'Total assets',
-                                             'Total Liabilities',
-                                             'Current Assets',
-                                             'Current Liabilities',
-                                             'Long Term Debt',
-                                             'Total Stockholder Equity',
-                                             'Intangible Assets',
-                                             'Years since loss',
-                                             'Years of earnings decline',
-                                             'Dividend CAGR past 20y',
-                                             'Years of uninterrupted dividends'
-                                            ])
-
-pd.set_option("display.max_rows", None, "display.max_columns", None)
-
+    pd.set_option("display.max_rows", None, "display.max_columns", None)
+    return(habadf)
 
 NCAV = habadf['Current Assets']-habadf['Total Liabilities']
 WC = habadf['Current Assets']-habadf['Current Liabilities']

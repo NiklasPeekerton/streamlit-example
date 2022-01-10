@@ -290,6 +290,8 @@ def read_data():
     pd.set_option("display.max_rows", None, "display.max_columns", None)
     return(habadf)
 
+read_data()
+
 NCAV = habadf['Current Assets']-habadf['Total Liabilities']
 WC = habadf['Current Assets']-habadf['Current Liabilities']
 

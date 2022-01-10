@@ -216,7 +216,35 @@ def read_data():
                      TA, dayzz, NegEC, DCAGR, Divyears, norm3decline10,
                     EPS3BVPS3, PEDY25])
 
-        habadf = pd.DataFrame(haba, columns= ['Ticker',
+        
+         #0.4 / ((Current P/E) / Highest P/E in the last 5 years.), I'll 4 for now instead
+        #habadf['currhighPE'] = 0.4/((habadf['Trailing PE'])/(PEepssum.max()))
+
+
+
+        #Unweighted Earning Power	(1 + (10-Year Earnings CAGR + Dividend Yield) - AAA Bond Rate)
+
+
+        #7-Year Projected Earnings	(EPS * (Earning Power ^ 7))
+
+
+        #Book Value/Total Debt	(All assets - intangible assets - all liabilities - par value of senior issues) / Total Debt
+        habadf['BVTB'] = habadf['Book Value']/habadf['Total Liabilities']
+
+        
+
+        # (52WeekHigh - Current) / (Current - 52WeekLow)
+        habadf['yearlowhigh'] = (habadf['Fifty Two Week High']-habadf['Market Price'])/(habadf['Market Price']-habadf['Fifty Two Week Low'])
+
+        #25 / 7-year average P/E
+
+
+        #20 / Trailing 12-month P/E
+        habadf['twentydivPE'] = 20 / habadf['Trailing PE']
+
+    return()
+
+habadf = pd.DataFrame(haba, columns= ['Ticker',
                                                  'Name',
                                                  'Market Price',
                                                  'Trailing PE',
@@ -251,32 +279,6 @@ def read_data():
                                                  '([Payout/Earnings] / Dividend Yield) / 25'
                                                  
                                                 ])
-         #0.4 / ((Current P/E) / Highest P/E in the last 5 years.), I'll 4 for now instead
-        #habadf['currhighPE'] = 0.4/((habadf['Trailing PE'])/(PEepssum.max()))
-
-
-
-        #Unweighted Earning Power	(1 + (10-Year Earnings CAGR + Dividend Yield) - AAA Bond Rate)
-
-
-        #7-Year Projected Earnings	(EPS * (Earning Power ^ 7))
-
-
-        #Book Value/Total Debt	(All assets - intangible assets - all liabilities - par value of senior issues) / Total Debt
-        habadf['BVTB'] = habadf['Book Value']/habadf['Total Liabilities']
-
-        
-
-        # (52WeekHigh - Current) / (Current - 52WeekLow)
-        habadf['yearlowhigh'] = (habadf['Fifty Two Week High']-habadf['Market Price'])/(habadf['Market Price']-habadf['Fifty Two Week Low'])
-
-        #25 / 7-year average P/E
-
-
-        #20 / Trailing 12-month P/E
-        habadf['twentydivPE'] = 20 / habadf['Trailing PE']
-
-    return(habadf)
 
 read_data()
 

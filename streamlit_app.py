@@ -29,6 +29,7 @@ Dividends = {}
 Earnings = {}
 
 #Fetches data. Cache somehow?
+@st.cache
 def fetch_data():
     for ticker in tqdm(dow_list):
         try:
@@ -273,8 +274,8 @@ newdf['15 / (P/E)'] = 15/habadf['Trailing PE']
 st.title('Stonkotracker 5000')
 
 st.title('Current Value')
-newdf['0,66/NCAVPS/Price']
-newdf['Grahams number']
+newdf[['Ticker','Name','0,66/NCAVPS/Price']]
+newdf[['Ticker','Name','Grahams number']]
 
 
 st.title('Financial situation')

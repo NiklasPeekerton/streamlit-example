@@ -4,17 +4,7 @@ from tqdm.notebook import trange, tqdm
 import pickle
 import streamlit as st
 
-st.title('Stonkotracker 5000')
 
-st.title('Current Value')
-newdf['0,66/NCAVPS/Price']
-newdf['Grahams number']
-
-
-st.title('Financial situation')
-newdf['CurAss/2*CurLiab']
-newdf['NCAV/TotDebt/1.1']
-newdf['NormEarn/7*InterestPay']
 
 
 
@@ -259,6 +249,15 @@ newdf['AAA bond yield / 1.5 x Dividend Yield'] = 0.0261 / (1.5*habadf['Trailing 
 newdf['15 / (P/E)'] = 15/habadf['Trailing PE']
 #0.4 / ((Current P/E) / Highest P/E in the last 5 years.)
 
-newdf
+st.title('Stonkotracker 5000')
 
+st.title('Current Value')
+newdf['0,66/NCAVPS/Price']
+newdf['Grahams number']
+
+
+st.title('Financial situation')
+newdf['CurAss/2*CurLiab']
+newdf['NCAV/TotDebt/1.1']
+newdf['NormEarn/7*InterestPay']
 

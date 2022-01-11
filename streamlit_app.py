@@ -211,10 +211,7 @@ def read_data():
                 print(ticker, e)
 
 
-            haba.append([ticker,LN, MP, PE, SO, FL, FH, ETTM, BV, PB, ADR, ADY, 
-                         TR, NR, NR3, NI, NE, NE3, IE, TL, TCA, TCL, LTD, TSE, IA, 
-                         TA, dayzz, NegEC, DCAGR, Divyears, norm3decline10,
-                        EPS3BVPS3, PEDY25])
+            haba.append([ticker,LN, MP, PE, SO, FL, FH, ETTM, BV, PB, ADR, ADY, TR, NR, NR3, NI, NE, NE3, IE, TL, TCA, TCL, LTD, TSE, IA, TA, dayzz, NegEC, DCAGR, Divyears, norm3decline10, EPS3BVPS3, PEDY25])
 
         
              #0.4 / ((Current P/E) / Highest P/E in the last 5 years.), I'll 4 for now instead

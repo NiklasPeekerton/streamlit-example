@@ -428,7 +428,7 @@ st.caption('Cant do since we dont have data for revenue more than 4 years back')
 
 st.subheader('Profitability')
 
-st.caption('Earnings to price yield / [2 * AAA bond rate]')
+
 st.caption('You seeing this shit')
 st.caption('Earnings to price yield / [2 * AAA bond rate]')
 etpy = newdf[['Ticker','Name','Earnings to price yield / [2 * AAA bond rate]']].sort_values(by=['Earnings to price yield / [2 * AAA bond rate]'], ascending=False)
@@ -436,6 +436,7 @@ etpy
 
 st.caption('[Earnings / Revenue] / 0.1')
 st.caption('Work In Progress')
+st.markdown("![Alt Text](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)")
 
 
 st.caption('3-Year Normalized: Earnings-per-share / Book Value per share')

@@ -351,7 +351,7 @@ newdf['Intrinsic value'] = newdf['0,66/NCAVPS/Price'] + newdf['Grahams number']
 newdf['Financial situation'] = newdf['CurAss/2*CurLiab'] + newdf['NCAV/TotDebt/1.1'] + newdf['NormEarn/7*InterestPay'] + newdf['AllAss-AllLiab/AllLiab'] + newdf['Working capital / Long Term (non-current) debt']  + newdf['Total Revenue / Mean']#+ newdf['Years since most recent loss /5']
 
 #Earnings
-newdf['Earnings'] = newdf['0,66/NCAVPS/Price'] + newdf['Grahams number']
+newdf['Earnings'] = newdf['(4 - [Number of last 4 years with an earnings decline]) / 4'] + newdf['Earnings to price yield / [2 * AAA bond rate]'] + newdf['3-Year Normalized: Earnings-per-share / Book Value per share']
 
 #Dividends
 newdf['Dividends'] = newdf['0,66/NCAVPS/Price'] + newdf['Grahams number']
@@ -360,7 +360,7 @@ newdf['Dividends'] = newdf['0,66/NCAVPS/Price'] + newdf['Grahams number']
 newdf['Relative price'] = newdf['0,66/NCAVPS/Price'] + newdf['Grahams number']
 
 #Overall score
-newdf['Overall score'] = newdf['Intrinsic value'] + newdf['Financial situation']
+newdf['Overall score'] = newdf['Intrinsic value'] + newdf['Financial situation'] + newdf['Earnings']
 
 st.title('Stonkotracker 5000')
 
@@ -376,6 +376,10 @@ intrinsic
 st.subheader('Financial situation')
 financial = newdf[['Ticker','Name','Financial situation']].sort_values(by=['Financial situation'], ascending=False)
 financial
+
+st.subheader('Earnings')
+earnings = newdf[['Ticker','Name','Earnings']].sort_values(by=['Earnings'], ascending=False)
+earnings
 
 
 

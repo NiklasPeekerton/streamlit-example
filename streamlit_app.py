@@ -401,10 +401,45 @@ mrl
 
 st.subheader('Overall Size')
 st.caption('Statistically, it is much less likely for a big company to completely go out of business, therefore size is used as a proxy for safety. 500M in revenue is roughly the average for the whole stock market. Although we might want to look at smaller companies, this is a good way to stop us from overlooking the risk that comes with less revenue.')
-st.caption('[Total Revenue / mean of Dow Jones')
+st.caption('Total Revenue / mean of Dow Jones')
 osd = newdf[['Ticker','Name','Total Revenue / Mean']].sort_values(by=['Total Revenue / Mean'], ascending=False)
 osd
-st.caption('[Total Revenue / 500M')
+st.caption('Total Revenue / 500M')
 os5 = newdf[['Ticker','Name','Total Revenue / 500M']].sort_values(by=['Total Revenue / 500M'], ascending=False)
 os5
+
+st.header('Earnings')
+
+st.subheader('Stability')
+st.caption('Shouldve been 10 but only have data for the past 4 years')
+st.caption('(4 - [Number of last 4 years with an earnings decline]) / 4')
+s = newdf[['Ticker','Name','(4 - [Number of last 4 years with an earnings decline]) / 4']].sort_values(by=['(4 - [Number of last 4 years with an earnings decline]) / 4'], ascending=False)
+s
+
+st.subheader('Growth')
+st.caption('([Normalized earnings from the last 3 years] / [Same from 10 years earlier]) / 1.3')
+st.caption('Work In Progress')
+
+st.caption('10-year CAGR / 0.07')
+st.caption('Work In Progress')
+
+st.caption('"[Normalized Earnings / Normalized Revenue for last 3 years] / [1.5 * Same from 10 years earlier]"')
+st.caption('Cant do since we dont have data for revenue more than 4 years back')
+
+st.subheader('Profitability')
+
+st.caption('Earnings to price yield / [2 * AAA bond rate]')
+st.caption('You seeing this shit')
+st.caption('Earnings to price yield / [2 * AAA bond rate]')
+etpy = newdf[['Ticker','Name','Earnings to price yield / [2 * AAA bond rate]']].sort_values(by=['Earnings to price yield / [2 * AAA bond rate]'], ascending=False)
+etpy
+
+st.caption('[Earnings / Revenue] / 0.1')
+st.caption('Work In Progress')
+
+norm3 = '3-Year Normalized: Earnings-per-share / Book Value per share'
+st.caption('3-Year Normalized: Earnings-per-share / Book Value per share')
+st.caption('DONE (but shares outstanding is just for last year)')
+norm3b = newdf[['Ticker','Name','norm3']].sort_values(by=['norm3'], ascending=False)
+norm3b
 

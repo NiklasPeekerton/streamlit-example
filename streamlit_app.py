@@ -47,6 +47,9 @@ def fetch_data():
 
     with open('Earnings.pkl', 'wb') as f:
         pickle.dump(Earnings, f)
+     
+    with open('Price.pkl', 'wb') as f:
+        pickle.dump(Price, f)
     
     return()
 

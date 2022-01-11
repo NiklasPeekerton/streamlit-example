@@ -354,7 +354,7 @@ newdf['Financial situation'] = newdf['CurAss/2*CurLiab'] + newdf['NCAV/TotDebt/1
 newdf['Earnings'] = newdf['(4 - [Number of last 4 years with an earnings decline]) / 4'] + newdf['Earnings to price yield / [2 * AAA bond rate]'] + habadf['3-Year Normalized: Earnings-per-share / Book Value per share']
 
 #Dividends
-newdf['Dividends'] = newdf['Total uninterrupted years with dividend/10'] + newdf['Dividend CAGR past 20y'] + newdf['Dividend Yield / 0.02'] + newdf['AAA bond yield / 1.5 x Dividend Yield'] + newdf['([Payout/Earnings] / Dividend Yield) / 25']
+newdf['Dividends'] = newdf['Total uninterrupted years with dividend/10'] + newdf['Dividend CAGR past 20y'] + newdf['Dividend Yield / 0.02'] + newdf['AAA bond yield / 1.5 x Dividend Yield'] + habadf['([Payout/Earnings] / Dividend Yield) / 25']
 
 #Relative price
 newdf['Relative price'] = newdf['0,66/NCAVPS/Price'] + newdf['Grahams number']

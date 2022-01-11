@@ -483,36 +483,36 @@ st.header('Relative price')
 st.subheader('P/E compared to market history')
 st.markdown('The historical average is about 20, so anything lower than 15 is generally "low". Low P/E values alone have been shown to correlate with better performance over the following few years.')
 st.caption('15 / (P/E)')
-pem = newdf[['Ticker','15 / (P/E)']].sort_values(by=['15 / (P/E)'], ascending=False)
+pem = newdf[['Ticker','Name','15 / (P/E)']].sort_values(by=['15 / (P/E)'], ascending=False)
 pem
 
 st.subheader('P/E compared to company history')
 
 st.caption('0.4 / ((Current P/E) / Highest P/E in the last 5 years.)')
-pe1 = newdf[['Ticker','currhighPE']].sort_values(by=['currhighPE)'], ascending=False)
+pe1 = newdf[['Ticker','Name','currhighPE']].sort_values(by=['currhighPE)'], ascending=False)
 pe1
 
 st.caption('[Highest P/E] / [lowest P/E] (considering the past 4 years)')
-pe2 = newdf[['Ticker','[Highest P/E] / [lowest P/E] (considering the past 4 years))']].sort_values(by=['[Highest P/E] / [lowest P/E] (considering the past 4 years)'], ascending=False)
+pe2 = habadf[['Ticker','Name','[Highest P/E] / [lowest P/E] (considering the past 4 years))']].sort_values(by=['[Highest P/E] / [lowest P/E] (considering the past 4 years)'], ascending=False)
 pe2
 
 st.caption('(Current - 52WeekLow) / (52WeekHigh - Current)')
-pe3 = newdf[['Ticker','yearlowhigh']].sort_values(by=['yearlowhigh'], ascending=False)
+pe3 = habadf[['Ticker','Name','yearlowhigh']].sort_values(by=['yearlowhigh'], ascending=False)
 pe3
 
 st.caption('25 / 7-year average P/E')
-#pe4 = newdf[['Ticker','15 / (P/E)']].sort_values(by=['15 / (P/E)'], ascending=False)
+#pe4 = newdf[['Ticker','Name','15 / (P/E)']].sort_values(by=['15 / (P/E)'], ascending=False)
 #pe4
 
 st.caption('20 / Trailing 12-month P/E')
-pe5 = newdf[['Ticker','twentydivPE']].sort_values(by=['twentydivPE'], ascending=False)
+pe5 = habadf[['Ticker','Name','twentydivPE']].sort_values(by=['twentydivPE'], ascending=False)
 pe5
 
 
 st.subheader('P/E as a multiple of market average')
 st.markdown('How much we are paying for profits relative to what everyone else is paying.')
 st.caption('MA / (P/E)')
-pe5 = newdf[['Ticker','MA/(P/E)']].sort_values(by=['MA/(P/E)'], ascending=False)
+pe5 = newdf[['Ticker','Name','MA/(P/E)']].sort_values(by=['MA/(P/E)'], ascending=False)
 pe5
 
 

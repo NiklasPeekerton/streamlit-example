@@ -344,12 +344,17 @@ newdf['15 / (P/E)'] = 15/habadf['Trailing PE']
 
 st.title('Stonkotracker 5000')
 
-st.title('Current Value')
+st.header('Current Value')
+st.caption('Price-to-NCAV')
+st.markdown('Ignoring things like factories and equipment, how many dollars are we paying per dollar? 0.66 / (Price/NCAVPS)')
 newdf[['Ticker','Name','0,66/NCAVPS/Price']]
+
+st.caption('Grahams number')
+st.markdown('Grahams number is price-to-book * price-to-earnings. You dont want to over-pay for either of them, so this metric ensures that they are both reasonable. 22.5 / Grahams Number')
 newdf[['Ticker','Name','Grahams number']]
 
 
-st.title('Financial situation')
+st.header('Financial situation')
 newdf[['Ticker','Name','CurAss/2*CurLiab']]
 newdf[['Ticker','Name','NCAV/TotDebt/1.1']]
 newdf[['Ticker','Name','NormEarn/7*InterestPay']]

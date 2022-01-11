@@ -355,7 +355,7 @@ NCAVPS = newdf[['Ticker','Name','0,66/NCAVPS/Price']].sort_values(by=['0,66/NCAV
 NCAVPS
 
 st.subheader('Grahams number')
-st.caption('Grahams number is price-to-book * price-to-earnings. You dont want to over-pay for either of them, so this metric ensures that they are both reasonable. 22.5 / Grahams Number')
+st.markdown('Grahams number is price-to-book * price-to-earnings. You dont want to over-pay for either of them, so this metric ensures that they are both reasonable. 22.5 / Grahams Number')
 newdf[['Ticker','Name','Grahams number']].sort_values(by=['Grahams number'], ascending=False)
 grahams = newdf[['Ticker','Name','Grahams number']].sort_values(by=['Grahams number'], ascending=False)
 grahams
@@ -364,7 +364,7 @@ st.header('Financial situation')
 st.caption('HIGHER IS BETTER. ALL METRICS = 1 WHEN THEY MEET GRAHAMS EXPECTATIONS. These metrics attempt to estimate the instrinsic value of a company, as objectively as possible, relative to the price.')
 
 st.subheader('Current Ratio')
-st.caption('This is the ability to pay the liabilities in the next year with the cash and liquid assets they already have.')
+st.markdown('This is the ability to pay the liabilities in the next year with the cash and liquid assets they already have.')
 st.caption('Current Assets / [2 * Current Liabilities]')
 cr = newdf[['Ticker','Name','CurAss/2*CurLiab']].sort_values(by=['CurAss/2*CurLiab'], ascending=False)
 cr

@@ -207,7 +207,7 @@ def read_data():
             
 
 
-            except Exception as e:
+        except Exception as e:
                 print(ticker, e)
 
 

@@ -342,7 +342,29 @@ newdf['AAA bond yield / 1.5 x Dividend Yield'] = 0.0261 / (1.5*habadf['Trailing 
 newdf['15 / (P/E)'] = 15/habadf['Trailing PE']
 #0.4 / ((Current P/E) / Highest P/E in the last 5 years.)
 
+#Overall score
+#intrinsic value
+newdf['Intrinsic value'] = newdf['0,66/NCAVPS/Price'] + newdf['Grahams number']
+
+#Financial situation
+
+#Earnings
+
+#Dividends
+
+#Relative price
+
+
+
+
 st.title('Stonkotracker 5000')
+
+st.header('Overall scores')
+st.subheader('Intrinsic value')
+intrinsic = newdf[['Ticker','Name','Intrinsic value']].sort_values(by=['Intrinsic value'], ascending=False)
+intrinsic
+
+
 
 st.header('Intrinsic Value')
 st.caption('HIGHER IS BETTER. ALL METRICS = 1 WHEN THEY MEET GRAHAMS EXPECTATIONS. These metrics attempt to estimate the instrinsic value of a company, as objectively as possible, relative to the price.')

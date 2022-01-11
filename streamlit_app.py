@@ -344,12 +344,12 @@ newdf['15 / (P/E)'] = 15/habadf['Trailing PE']
 
 st.title('Stonkotracker 5000')
 
-
-
 st.header('Intrinsic Value')
+st.caption('HIGHER IS BETTER. ALL METRICS = 1 WHEN THEY MEET GRAHAMS EXPECTATIONS. These metrics attempt to estimate the instrinsic value of a company, as objectively as possible, relative to the price.')
+
 st.subheader('Price-to-NCAV')
 st.caption('Ignoring things like factories and equipment, how many dollars are we paying per dollar?')
-st.markdown('0.66 / (Price/NCAVPS)')
+st.caption('0.66 / (Price/NCAVPS)')
 newdf[['Ticker','Name','0,66/NCAVPS/Price']]
 
 st.subheader('Grahams number')

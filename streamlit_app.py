@@ -419,9 +419,11 @@ s
 st.subheader('Growth')
 st.caption('([Normalized earnings from the last 3 years] / [Same from 10 years earlier]) / 1.3')
 st.caption('Work In Progress')
+st.markdown("![Alt Text](https://media.giphy.com/media/DqhwoR9RHm3EA/giphy.gif)")
 
 st.caption('10-year CAGR / 0.07')
 st.caption('Work In Progress')
+st.markdown("![Alt Text](https://media.giphy.com/media/5Zesu5VPNGJlm/giphy.gif)")
 
 st.caption('"[Normalized Earnings / Normalized Revenue for last 3 years] / [1.5 * Same from 10 years earlier]"')
 st.caption('Cant do since we dont have data for revenue more than 4 years back')

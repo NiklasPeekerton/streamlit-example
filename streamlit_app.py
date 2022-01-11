@@ -86,9 +86,9 @@ def read_data():
     yearnow = pd.Timestamp.now().year
     for ticker in dow_list:
         try:
-            IncomeStatement = Financialsj[ticker]['yearly_income_statement']
+            IncomeStatement = Financials[ticker]['yearly_income_statement']
             ist = IncomeStatement.reindex(keysIS)
-            BalanceSheet = Financialsj[ticker]['yearly_balance_sheet']
+            BalanceSheet = Financials[ticker]['yearly_balance_sheet']
             bs = BalanceSheet.reindex(keysBS)
             TR = ist.loc['totalRevenue'][0]
             NR = ist.loc['totalRevenue'].mean(skipna = True)
@@ -108,17 +108,17 @@ def read_data():
             TA = bs.loc['totalAssets'][0]
             TA3 = bs.loc['totalAssets'][:3]
 
-            LN = Quotej.get(ticker).get('longName')
-            MP = Quotej.get(ticker).get('regularMarketPrice')
-            PE = Quotej.get(ticker).get('trailingPE')
-            SO = Quotej.get(ticker).get('sharesOutstanding')
-            FL = Quotej.get(ticker).get('fiftyTwoWeekLow')
-            FH = Quotej.get(ticker).get('fiftyTwoWeekHigh')
-            ETTM = Quotej.get(ticker).get('epsTrailingTwelveMonths')
-            BV = Quotej.get(ticker).get('bookValue')
-            PB = Quotej.get(ticker).get('priceToBook')
-            ADR = Quotej.get(ticker).get('trailingAnnualDividendRate')
-            ADY = Quotej.get(ticker).get('trailingAnnualDividendYield')
+            LN = Quote.get(ticker).get('longName')
+            MP = Quote.get(ticker).get('regularMarketPrice')
+            PE = Quote.get(ticker).get('trailingPE')
+            SO = Quote.get(ticker).get('sharesOutstanding')
+            FL = Quote.get(ticker).get('fiftyTwoWeekLow')
+            FH = Quote.get(ticker).get('fiftyTwoWeekHigh')
+            ETTM = Quote.get(ticker).get('epsTrailingTwelveMonths')
+            BV = Quote.get(ticker).get('bookValue')
+            PB = Quote.get(ticker).get('priceToBook')
+            ADR = Quote.get(ticker).get('trailingAnnualDividendRate')
+            ADY = Quote.get(ticker).get('trailingAnnualDividendYield')
 
             #Years since last loss
             dayz = ist.loc['netIncome']
@@ -133,7 +133,7 @@ def read_data():
             NegEC = np.sum((NegEarn < 0).values.ravel())
 
             #Dividend CAGR & years of uninterrupted dividends
-            div = Dividendsj[ticker]
+            div = Dividends[ticker]
             if div.empty:
                 print(ticker, 'Has never had dividends')
                 DCAGR = None
@@ -164,7 +164,7 @@ def read_data():
                 
             eps = []
 
-            for ep in Earningsj[ticker]:
+            for ep in Earnings[ticker]:
                 date = ep['startdatetime']
                 ticker = ep['ticker']
                 epsactual = ep['epsactual']

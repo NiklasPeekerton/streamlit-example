@@ -58,7 +58,7 @@ if clicky:
     fetch_data()
     st.write('Downloading data')
 
-    
+Financials['AAPL']['yearly_income_statement'] 
     
 
 

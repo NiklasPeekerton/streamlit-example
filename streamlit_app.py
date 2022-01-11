@@ -352,6 +352,7 @@ st.caption('Ignoring things like factories and equipment, how many dollars are w
 st.caption('0.66 / (Price/NCAVPS)')
 NCAVPS = newdf[['Ticker','Name','0,66/NCAVPS/Price']]
 NCAVPS.sort_values(by=['0,66/NCAVPS/Price'])
+NCAVPS
 
 st.subheader('Grahams number')
 st.caption('Grahams number is price-to-book * price-to-earnings. You dont want to over-pay for either of them, so this metric ensures that they are both reasonable. 22.5 / Grahams Number')

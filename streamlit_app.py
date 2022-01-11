@@ -387,3 +387,24 @@ st.caption('(All assets - all liabilities) / All liabilities')
 de = newdf[['Ticker','Name','AllAss-AllLiab/AllLiab']].sort_values(by=['AllAss-AllLiab/AllLiab'], ascending=False)
 de
 
+st.subheader('Working capital / Long term debt')
+st.caption('Long term debt = "non-current" debt.')
+st.caption('Working capital / Long Term (non-current) debt')
+wl = newdf[['Ticker','Name','Working capital / Long Term (non-current) debt']].sort_values(by=['Working capital / Long Term (non-current) debt'], ascending=False)
+wl
+
+st.subheader('Most recent loss')
+st.caption('NOTE: This can produce scores larger than 1 if the company has been profitable for a long time. That is intentional.')
+st.caption('[Number of years back to the most recent loss] / 5')
+mrl = newdf[['Ticker','Name','Years since most recent loss /5']].sort_values(by=['Years since most recent loss /5'], ascending=False)
+mrl
+
+st.subheader('Overall Size')
+st.caption('Statistically, it is much less likely for a big company to completely go out of business, therefore size is used as a proxy for safety. 500M in revenue is roughly the average for the whole stock market. Although we might want to look at smaller companies, this is a good way to stop us from overlooking the risk that comes with less revenue.')
+st.caption('[Total Revenue / mean of Dow Jones')
+osd = newdf[['Ticker','Name','Total Revenue / Mean']].sort_values(by=['Total Revenue / Mean'], ascending=False)
+osd
+st.caption('[Total Revenue / 500M')
+os5 = newdf[['Ticker','Name','Total Revenue / 500M']].sort_values(by=['Total Revenue / 500M'], ascending=False)
+os5
+

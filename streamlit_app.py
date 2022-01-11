@@ -348,7 +348,7 @@ newdf['15 / (P/E)'] = 15/habadf['Trailing PE']
 newdf['Intrinsic value'] = newdf['0,66/NCAVPS/Price'] + newdf['Grahams number']
 
 #Financial situation
-newdf['Financial situation'] = newdf['CurAss/2*CurLiab'] + newdf['NCAV/TotDebt/1.1'] + newdf['NormEarn/7*InterestPay'] + newdf['AllAss-AllLiab/AllLiab'] + newdf['Working capital / Long Term (non-current) debt'] + newdf['Years since most recent loss /5'] + newdf['Total Revenue / Mean']
+newdf['Financial situation'] = newdf['CurAss/2*CurLiab'] + newdf['NCAV/TotDebt/1.1'] + newdf['NormEarn/7*InterestPay'] + newdf['AllAss-AllLiab/AllLiab'] + newdf['Working capital / Long Term (non-current) debt']  + newdf['Total Revenue / Mean']#+ newdf['Years since most recent loss /5']
 
 #Earnings
 newdf['Earnings'] = newdf['0,66/NCAVPS/Price'] + newdf['Grahams number']

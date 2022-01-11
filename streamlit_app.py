@@ -12,8 +12,6 @@ import numpy as np
 sp_list = si.tickers_sp500()
 dow_list = si.tickers_dow()
 
-dowdf = pd.DataFrame(dow_list)
-dowdf
 
 Financials = {}
 Quote = {}
@@ -306,11 +304,6 @@ habadf['yearlowhigh'] = (habadf['Fifty Two Week High']-habadf['Market Price'])/(
 habadf['twentydivPE'] = 20 / habadf['Trailing PE']
 
 
-clicky2 = st.button('Read data')
-
-if clicky2:
-    read_data()
-    st.write('Reading data')
 
 NCAV = habadf['Current Assets']-habadf['Total Liabilities']
 WC = habadf['Current Assets']-habadf['Current Liabilities']

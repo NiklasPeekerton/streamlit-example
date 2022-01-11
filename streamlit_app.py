@@ -207,40 +207,40 @@ def read_data():
             
 
 
-        except Exception as e:
-            print(ticker, e)
+            except Exception as e:
+                print(ticker, e)
 
 
-        haba.append([ticker,LN, MP, PE, SO, FL, FH, ETTM, BV, PB, ADR, ADY, 
-                     TR, NR, NR3, NI, NE, NE3, IE, TL, TCA, TCL, LTD, TSE, IA, 
-                     TA, dayzz, NegEC, DCAGR, Divyears, norm3decline10,
-                    EPS3BVPS3, PEDY25])
-
-        
-         #0.4 / ((Current P/E) / Highest P/E in the last 5 years.), I'll 4 for now instead
-        #habadf['currhighPE'] = 0.4/((habadf['Trailing PE'])/(PEepssum.max()))
-
-
-
-        #Unweighted Earning Power	(1 + (10-Year Earnings CAGR + Dividend Yield) - AAA Bond Rate)
-
-
-        #7-Year Projected Earnings	(EPS * (Earning Power ^ 7))
-
-
-        #Book Value/Total Debt	(All assets - intangible assets - all liabilities - par value of senior issues) / Total Debt
-        habadf['BVTB'] = habadf['Book Value']/habadf['Total Liabilities']
+            haba.append([ticker,LN, MP, PE, SO, FL, FH, ETTM, BV, PB, ADR, ADY, 
+                         TR, NR, NR3, NI, NE, NE3, IE, TL, TCA, TCL, LTD, TSE, IA, 
+                         TA, dayzz, NegEC, DCAGR, Divyears, norm3decline10,
+                        EPS3BVPS3, PEDY25])
 
         
-
-        # (52WeekHigh - Current) / (Current - 52WeekLow)
-        habadf['yearlowhigh'] = (habadf['Fifty Two Week High']-habadf['Market Price'])/(habadf['Market Price']-habadf['Fifty Two Week Low'])
-
-        #25 / 7-year average P/E
+             #0.4 / ((Current P/E) / Highest P/E in the last 5 years.), I'll 4 for now instead
+            #habadf['currhighPE'] = 0.4/((habadf['Trailing PE'])/(PEepssum.max()))
 
 
-        #20 / Trailing 12-month P/E
-        habadf['twentydivPE'] = 20 / habadf['Trailing PE']
+
+            #Unweighted Earning Power	(1 + (10-Year Earnings CAGR + Dividend Yield) - AAA Bond Rate)
+
+
+            #7-Year Projected Earnings	(EPS * (Earning Power ^ 7))
+
+
+            #Book Value/Total Debt	(All assets - intangible assets - all liabilities - par value of senior issues) / Total Debt
+            habadf['BVTB'] = habadf['Book Value']/habadf['Total Liabilities']
+
+
+
+            # (52WeekHigh - Current) / (Current - 52WeekLow)
+            habadf['yearlowhigh'] = (habadf['Fifty Two Week High']-habadf['Market Price'])/(habadf['Market Price']-habadf['Fifty Two Week Low'])
+
+            #25 / 7-year average P/E
+
+
+            #20 / Trailing 12-month P/E
+            habadf['twentydivPE'] = 20 / habadf['Trailing PE']
 
     return()
 

@@ -501,6 +501,7 @@ pe3 = habadf[['Ticker','Name','yearlowhigh']].sort_values(by=['yearlowhigh'], as
 pe3
 
 st.caption('25 / 7-year average P/E')
+st.markdown("![Alt Text](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)")
 #pe4 = newdf[['Ticker','Name','15 / (P/E)']].sort_values(by=['15 / (P/E)'], ascending=False)
 #pe4
 

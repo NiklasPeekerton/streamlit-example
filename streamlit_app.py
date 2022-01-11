@@ -354,13 +354,13 @@ newdf['Financial situation'] = newdf['CurAss/2*CurLiab'] + newdf['NCAV/TotDebt/1
 newdf['Earnings'] = newdf['(4 - [Number of last 4 years with an earnings decline]) / 4'] + newdf['Earnings to price yield / [2 * AAA bond rate]'] + habadf['3-Year Normalized: Earnings-per-share / Book Value per share']
 
 #Dividends
-newdf['Dividends'] = newdf['0,66/NCAVPS/Price'] + newdf['Grahams number']
+newdf['Dividends'] = newdf['Total uninterrupted years with dividend/10'] + newdf['Dividend CAGR past 20y'] + newdf['Dividend Yield / 0.02'] + newdf['AAA bond yield / 1.5 x Dividend Yield'] + newdf['([Payout/Earnings] / Dividend Yield) / 25']
 
 #Relative price
 newdf['Relative price'] = newdf['0,66/NCAVPS/Price'] + newdf['Grahams number']
 
 #Overall score
-newdf['Overall score'] = newdf['Intrinsic value'] + newdf['Financial situation'] + newdf['Earnings']
+newdf['Overall score'] = newdf['Intrinsic value'] + newdf['Financial situation'] + newdf['Earnings'] + newdf['Dividends']
 
 st.title('Stonkotracker 5000')
 
@@ -380,6 +380,10 @@ financial
 st.subheader('Earnings')
 earnings = newdf[['Ticker','Name','Earnings']].sort_values(by=['Earnings'], ascending=False)
 earnings
+
+st.subheader('Dividends')
+dividends = newdf[['Ticker','Name','Dividends']].sort_values(by=['Dividends'], ascending=False)
+dividends
 
 
 

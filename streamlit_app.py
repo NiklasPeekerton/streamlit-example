@@ -357,7 +357,8 @@ NCAVPS
 st.subheader('Grahams number')
 st.caption('Grahams number is price-to-book * price-to-earnings. You dont want to over-pay for either of them, so this metric ensures that they are both reasonable. 22.5 / Grahams Number')
 newdf[['Ticker','Name','Grahams number']].sort_values(by=['Grahams number'], ascending=False)
-
+grahams = newdf[['Ticker','Name','Grahams number']].sort_values(by=['Grahams number'], ascending=False)
+grahams
 
 st.header('Financial situation')
 st.caption('HIGHER IS BETTER. ALL METRICS = 1 WHEN THEY MEET GRAHAMS EXPECTATIONS. These metrics attempt to estimate the instrinsic value of a company, as objectively as possible, relative to the price.')

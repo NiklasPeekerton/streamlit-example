@@ -67,17 +67,17 @@ dow_list = si.tickers_dow()
 
 #@st.cache
 def read_data():
-    with open('Financials.pkl','rb') as read_file:
-        Financialsj = pickle.load(read_file)
-
-    with open('Quote.pkl','rb') as read_file:
-        Quotej = pickle.load(read_file)
-
-    with open('Dividends.pkl','rb') as read_file:
-        Dividendsj = pickle.load(read_file)
-
-    with open('Earnings.pkl','rb') as read_file:
-        Earningsj = pickle.load(read_file)
+#    with open('Financials.pkl','rb') as read_file:
+#        Financialsj = pickle.load(read_file)
+#
+#    with open('Quote.pkl','rb') as read_file:
+#        Quotej = pickle.load(read_file)
+#
+#    with open('Dividends.pkl','rb') as read_file:
+#        Dividendsj = pickle.load(read_file)
+#
+#    with open('Earnings.pkl','rb') as read_file:
+#        Earningsj = pickle.load(read_file)
 
     keysIS = ['totalRevenue', 'netIncome', 'interestExpense']
     keysBS = ['totalLiab', 'totalCurrentAssets', 'totalCurrentLiabilities', 'longTermDebt', 'totalStockholderEquity', 'intangibleAssets', 'totalAssets']

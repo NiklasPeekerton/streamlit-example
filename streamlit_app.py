@@ -57,6 +57,8 @@ clicky = st.button('Fetch data')
 if clicky:
     fetch_data()
     st.write('Downloading data')
+    
+fetch_data()
 
 Financials['AAPL']['yearly_income_statement'] 
     

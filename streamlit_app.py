@@ -365,17 +365,17 @@ st.caption('HIGHER IS BETTER. ALL METRICS = 1 WHEN THEY MEET GRAHAMS EXPECTATION
 st.subheader('Current Ratio')
 st.caption('This is the ability to pay the liabilities in the next year with the cash and liquid assets they already have.')
 st.caption('Current Assets / [2 * Current Liabilities]')
-newdf[['Ticker','Name','CurAss/2*CurLiab']].sort_values(by=['Grahams number'], ascending=False)
+newdf[['Ticker','Name','CurAss/2*CurLiab']].sort_values(by=['CurAss/2*CurLiab'], ascending=False)
 
 st.subheader('NCAV/Total Debt')
 st.caption('This is the ability to pay all debt with the cash and liquid assets they already have.')
 st.caption('(NCAV / Total Debt) / 1.1')
-newdf[['Ticker','Name','NCAV/TotDebt/1.1']].sort_values(by=['Grahams number'], ascending=False)
+newdf[['Ticker','Name','NCAV/TotDebt/1.1']].sort_values(by=['NCAV/TotDebt/1.1'], ascending=False)
 
 st.subheader('Interest Coverage')
 st.caption('This measures how well their profits cover their debt payments. "Normalized" earnings are the average of the last three years of net income.')
 st.caption('Normalized Earnings / 7 * Interest payments on debt')
-newdf[['Ticker','Name','NormEarn/7*InterestPay']].sort_values(by=['Grahams number'], ascending=False)
+newdf[['Ticker','Name','NormEarn/7*InterestPay']].sort_values(by=['NormEarn/7*InterestPay'], ascending=False)
 
 
     

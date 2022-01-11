@@ -437,9 +437,11 @@ etpy
 st.caption('[Earnings / Revenue] / 0.1')
 st.caption('Work In Progress')
 
-norm3 = '3-Year Normalized: Earnings-per-share / Book Value per share'
+
 st.caption('3-Year Normalized: Earnings-per-share / Book Value per share')
 st.caption('DONE (but shares outstanding is just for last year)')
-norm3b = newdf[['Ticker','Name','norm3']].sort_values(by=['norm3'], ascending=False)
+norm3b = newdf[['Ticker','Name','3-Year Normalized: Earnings-per-share / Book Value per share']].sort_values(by=['3-Year Normalized: Earnings-per-share / Book Value per share'], ascending=False)
 norm3b
 
+#norm3b = newdf[['Ticker','Name','norm3']].sort_values(by=['norm3'], ascending=False)
+#norm3b

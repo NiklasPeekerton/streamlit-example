@@ -343,26 +343,39 @@ newdf['15 / (P/E)'] = 15/habadf['Trailing PE']
 #0.4 / ((Current P/E) / Highest P/E in the last 5 years.)
 
 #Overall score
+newdf['Overall score'] = newdf['Intrinsic value'] + newdf['Financial situation']
+
 #intrinsic value
 newdf['Intrinsic value'] = newdf['0,66/NCAVPS/Price'] + newdf['Grahams number']
 
 #Financial situation
+newdf['Financial situation'] = newdf['CurAss/2*CurLiab'] + newdf['NCAV/TotDebt/1.1'] + newdf['NormEarn/7*InterestPay'] + newdf['AllAss-AllLiab/AllLiab'] + newdf['Working capital / Long Term (non-current) debt'] + newdf['Years since most recent loss /5'] + newdf['Total Revenue / Mean']
 
 #Earnings
+newdf['Earnings'] = newdf['0,66/NCAVPS/Price'] + newdf['Grahams number']
 
 #Dividends
+newdf['Dividends'] = newdf['0,66/NCAVPS/Price'] + newdf['Grahams number']
 
 #Relative price
-
+newdf['Relative price'] = newdf['0,66/NCAVPS/Price'] + newdf['Grahams number']
 
 
 
 st.title('Stonkotracker 5000')
 
 st.header('Overall scores')
+st.subheader('Overall score')
+overall = newdf[['Ticker','Name','Overall score']].sort_values(by=['Overall score'], ascending=False)
+overall
+
 st.subheader('Intrinsic value')
 intrinsic = newdf[['Ticker','Name','Intrinsic value']].sort_values(by=['Intrinsic value'], ascending=False)
 intrinsic
+
+st.subheader('Financial situation')
+financial = newdf[['Ticker','Name','Financial situation']].sort_values(by=['Financial situation'], ascending=False)
+financial
 
 
 

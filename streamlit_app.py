@@ -356,13 +356,26 @@ NCAVPS
 
 st.subheader('Grahams number')
 st.caption('Grahams number is price-to-book * price-to-earnings. You dont want to over-pay for either of them, so this metric ensures that they are both reasonable. 22.5 / Grahams Number')
-newdf[['Ticker','Name','Grahams number']]
+newdf[['Ticker','Name','Grahams number']].sort_values(by=['Grahams number'], ascending=False)
 
 
 st.header('Financial situation')
-newdf[['Ticker','Name','CurAss/2*CurLiab']]
-newdf[['Ticker','Name','NCAV/TotDebt/1.1']]
-newdf[['Ticker','Name','NormEarn/7*InterestPay']]
+st.caption('HIGHER IS BETTER. ALL METRICS = 1 WHEN THEY MEET GRAHAMS EXPECTATIONS. These metrics attempt to estimate the instrinsic value of a company, as objectively as possible, relative to the price.')
+
+st.subheader('Current Ratio')
+st.caption('This is the ability to pay the liabilities in the next year with the cash and liquid assets they already have.')
+st.caption('Current Assets / [2 * Current Liabilities]')
+newdf[['Ticker','Name','CurAss/2*CurLiab']].sort_values(by=['Grahams number'], ascending=False)
+
+st.subheader('NCAV/Total Debt')
+st.caption('This is the ability to pay all debt with the cash and liquid assets they already have.')
+st.caption('(NCAV / Total Debt) / 1.1')
+newdf[['Ticker','Name','NCAV/TotDebt/1.1']].sort_values(by=['Grahams number'], ascending=False)
+
+st.subheader('Interest Coverage')
+st.caption('This measures how well their profits cover their debt payments. "Normalized" earnings are the average of the last three years of net income.')
+st.caption('Normalized Earnings / 7 * Interest payments on debt')
+newdf[['Ticker','Name','NormEarn/7*InterestPay']].sort_values(by=['Grahams number'], ascending=False)
 
 
     

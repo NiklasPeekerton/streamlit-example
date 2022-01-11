@@ -376,10 +376,14 @@ nt = newdf[['Ticker','Name','NCAV/TotDebt/1.1']].sort_values(by=['NCAV/TotDebt/1
 nt
 
 st.subheader('Interest Coverage')
-st.caption('This measures how well their profits cover their debt payments. "Normalized" earnings are the average of the last three years of net income.')
+st.caption('This ratio is reversed here so it gets higher when it is good. All assets - all liabiities = shareholder equity. This measures how much of the business is owned vs how much is loaned.')
 st.caption('Normalized Earnings / 7 * Interest payments on debt')
 ic = newdf[['Ticker','Name','NormEarn/7*InterestPay']].sort_values(by=['NormEarn/7*InterestPay'], ascending=False)
 ic
 
-    
+st.subheader('Debt-to-Equity (reversed)')
+st.caption('This measures how well their profits cover their debt payments. "Normalized" earnings are the average of the last three years of net income.')
+st.caption('(All assets - all liabilities) / All liabilities')
+de = newdf[['Ticker','Name','AllAss-AllLiab/AllLiab']].sort_values(by=['AllAss-AllLiab/AllLiab'], ascending=False)
+de
 

@@ -448,3 +448,73 @@ norm3b
 
 #norm3b = newdf[['Ticker','Name','norm3']].sort_values(by=['norm3'], ascending=False)
 #norm3b
+
+st.header('Dividends')
+
+st.caption('Some current dividend?')
+st.markdown("![Alt Text](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)")
+
+st.caption('Stability')
+st.caption('Total uninterrupted years with dividend / 10')
+stab = habadf[['Ticker','Name','Total uninterrupted years with dividend / 10']].sort_values(by=['Total uninterrupted years with dividend / 10'], ascending=False)
+stab
+
+st.caption('Growth')
+st.caption('[Dividend CAGR over past 20 years] + 1')
+gro = habadf[['Ticker','Name','[Dividend CAGR over past 20 years] + 1']].sort_values(by=['[Dividend CAGR over past 20 years] + 1'], ascending=False)
+gro
+
+st.caption('Profitability')
+st.caption('Dividend Yield = [payout per share / price per share] / 0.02')
+prof1 = habadf[['Ticker','Name','[Dividend Yield = [payout per share / price per share] / 0.02']].sort_values(by=['Dividend Yield = [payout per share / price per share] / 0.02'], ascending=False)
+prof1
+
+st.caption('[AAA bond yield / 1.5 x Dividend Yield]')
+prof2 = habadf[['Ticker','Name','[AAA bond yield / 1.5 x Dividend Yield]']].sort_values(by=['[AAA bond yield / 1.5 x Dividend Yield]'], ascending=False)
+prof2
+
+st.caption('([Payout/Earnings] / Dividend Yield) / 25')
+prof3 = habadf[['Ticker','Name','([Payout/Earnings] / Dividend Yield) / 25']].sort_values(by=['([Payout/Earnings] / Dividend Yield) / 25'], ascending=False)
+prof3
+
+
+st.header('Relative price')
+
+st.subheader('P/E compared to market history')
+st.markdown('The historical average is about 20, so anything lower than 15 is generally "low". Low P/E values alone have been shown to correlate with better performance over the following few years.')
+st.caption('15 / (P/E)')
+pem = newdf[['Ticker','15 / (P/E)']].sort_values(by=['15 / (P/E)'], ascending=False)
+pem
+
+st.subheader('P/E compared to company history')
+
+st.caption('0.4 / ((Current P/E) / Highest P/E in the last 5 years.)')
+pe1 = newdf[['Ticker','currhighPE']].sort_values(by=['currhighPE)'], ascending=False)
+pe1
+
+st.caption('[Highest P/E] / [lowest P/E] (considering the past 4 years)')
+pe2 = newdf[['Ticker','[Highest P/E] / [lowest P/E] (considering the past 4 years))']].sort_values(by=['[Highest P/E] / [lowest P/E] (considering the past 4 years)'], ascending=False)
+pe2
+
+st.caption('(Current - 52WeekLow) / (52WeekHigh - Current)')
+pe3 = newdf[['Ticker','yearlowhigh']].sort_values(by=['yearlowhigh'], ascending=False)
+pe3
+
+st.caption('25 / 7-year average P/E')
+#pe4 = newdf[['Ticker','15 / (P/E)']].sort_values(by=['15 / (P/E)'], ascending=False)
+#pe4
+
+st.caption('20 / Trailing 12-month P/E')
+pe5 = newdf[['Ticker','twentydivPE']].sort_values(by=['twentydivPE'], ascending=False)
+pe5
+
+
+st.subheader('P/E as a multiple of market average')
+st.markdown('How much we are paying for profits relative to what everyone else is paying.')
+st.caption('MA / (P/E)')
+pe5 = newdf[['Ticker','MA/(P/E)']].sort_values(by=['MA/(P/E)'], ascending=False)
+pe5
+
+
+
+

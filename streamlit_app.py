@@ -12,6 +12,9 @@ import numpy as np
 sp_list = si.tickers_sp500()
 dow_list = si.tickers_dow()
 
+dowdf = pd.DataFrame(dow_list)
+dowdf
+
 Financials = {}
 Quote = {}
 Dividends = {}

@@ -19,6 +19,7 @@ Financials = {}
 Quote = {}
 Dividends = {}
 Earnings = {}
+Price = {}
 
 #Fetches data. Cache somehow?
 

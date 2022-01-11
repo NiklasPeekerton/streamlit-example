@@ -342,8 +342,7 @@ newdf['AAA bond yield / 1.5 x Dividend Yield'] = 0.0261 / (1.5*habadf['Trailing 
 newdf['15 / (P/E)'] = 15/habadf['Trailing PE']
 #0.4 / ((Current P/E) / Highest P/E in the last 5 years.)
 
-#Overall score
-newdf['Overall score'] = newdf['Intrinsic value'] + newdf['Financial situation']
+
 
 #intrinsic value
 newdf['Intrinsic value'] = newdf['0,66/NCAVPS/Price'] + newdf['Grahams number']
@@ -360,7 +359,8 @@ newdf['Dividends'] = newdf['0,66/NCAVPS/Price'] + newdf['Grahams number']
 #Relative price
 newdf['Relative price'] = newdf['0,66/NCAVPS/Price'] + newdf['Grahams number']
 
-
+#Overall score
+newdf['Overall score'] = newdf['Intrinsic value'] + newdf['Financial situation']
 
 st.title('Stonkotracker 5000')
 

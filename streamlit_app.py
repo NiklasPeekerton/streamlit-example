@@ -489,7 +489,7 @@ pem
 st.subheader('P/E compared to company history')
 
 st.caption('0.4 / ((Current P/E) / Highest P/E in the last 5 years.)')
-pe1 = newdf[['Ticker','Name','currhighPE']].sort_values(by=['currhighPE)'], ascending=False)
+pe1 = habadf[['Ticker','Name','currhighPE']].sort_values(by=['currhighPE)'], ascending=False)
 pe1
 
 st.caption('[Highest P/E] / [lowest P/E] (considering the past 4 years)')

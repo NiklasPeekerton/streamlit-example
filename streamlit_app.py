@@ -357,7 +357,7 @@ newdf['Earnings'] = newdf['(4 - [Number of last 4 years with an earnings decline
 newdf['Dividends'] = newdf['Total uninterrupted years with dividend/10'] + newdf['Dividend CAGR past 20y'] + newdf['Dividend Yield / 0.02'] + newdf['AAA bond yield / 1.5 x Dividend Yield'] + habadf['([Payout/Earnings] / Dividend Yield) / 25']
 
 #Relative price
-newdf['Relative price'] = newdf['15 / (P/E)'] + habadf['currhighPE'] + habadf['[Highest P/E] / [lowest P/E] (considering the past 4 years)'] + habadf['yearlowhigh'] + habadf['twentydivPE'] + habadf['MA/(P/E)']
+newdf['Relative price'] = newdf['15 / (P/E)'] + habadf['currhighPE'] + habadf['[Highest P/E] / [lowest P/E] (considering the past 4 years)'] + habadf['yearlowhigh'] + habadf['twentydivPE'] + newdf['MA/(P/E)']
 
 #Overall score
 newdf['Overall score'] = newdf['Intrinsic value'] + newdf['Financial situation'] + newdf['Earnings'] + newdf['Dividends'] + newdf['Relative price']

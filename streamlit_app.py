@@ -357,10 +357,10 @@ newdf['Earnings'] = newdf['(4 - [Number of last 4 years with an earnings decline
 newdf['Dividends'] = newdf['Total uninterrupted years with dividend/10'] + newdf['Dividend CAGR past 20y'] + newdf['Dividend Yield / 0.02'] + newdf['AAA bond yield / 1.5 x Dividend Yield'] + habadf['([Payout/Earnings] / Dividend Yield) / 25']
 
 #Relative price
-newdf['Relative price'] = newdf['0,66/NCAVPS/Price'] + newdf['Grahams number']
+newdf['Relative price'] = newdf['15 / (P/E)'] + habadf['currhighPE'] + habadf['[Highest P/E] / [lowest P/E] (considering the past 4 years)'] + habadf['yearlowhigh'] + habadf['twentydivPE'] + habadf['MA/(P/E)']
 
 #Overall score
-newdf['Overall score'] = newdf['Intrinsic value'] + newdf['Financial situation'] + newdf['Earnings'] + newdf['Dividends']
+newdf['Overall score'] = newdf['Intrinsic value'] + newdf['Financial situation'] + newdf['Earnings'] + newdf['Dividends'] + newdf['Relative price']
 
 st.title('Stonkotracker 5000')
 
@@ -384,6 +384,10 @@ earnings
 st.subheader('Dividends')
 dividends = newdf[['Ticker','Name','Dividends']].sort_values(by=['Dividends'], ascending=False)
 dividends
+
+st.subheader('Relative price')
+price = newdf[['Ticker','Name','Relative price']].sort_values(by=['Relative price'], ascending=False)
+price
 
 
 
@@ -556,8 +560,8 @@ pe5
 st.subheader('P/E as a multiple of market average')
 st.markdown('How much we are paying for profits relative to what everyone else is paying.')
 st.caption('MA / (P/E)')
-pe5 = newdf[['Ticker','Name','MA/(P/E)']].sort_values(by=['MA/(P/E)'], ascending=False)
-pe5
+pe6 = newdf[['Ticker','Name','MA/(P/E)']].sort_values(by=['MA/(P/E)'], ascending=False)
+pe6
 
 
 

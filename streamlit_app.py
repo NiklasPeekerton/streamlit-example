@@ -305,7 +305,6 @@ habadf['yearlowhigh'] = (habadf['Fifty Two Week High']-habadf['Market Price'])/(
 #20 / Trailing 12-month P/E
 habadf['twentydivPE'] = 20 / habadf['Trailing PE']
 
-read_data()
 
 clicky2 = st.button('Read data')
 

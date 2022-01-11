@@ -348,7 +348,7 @@ st.header('Intrinsic Value')
 st.caption('HIGHER IS BETTER. ALL METRICS = 1 WHEN THEY MEET GRAHAMS EXPECTATIONS. These metrics attempt to estimate the instrinsic value of a company, as objectively as possible, relative to the price.')
 
 st.subheader('Price-to-NCAV')
-st.caption('Ignoring things like factories and equipment, how many dollars are we paying per dollar?')
+st.markdown('Ignoring things like factories and equipment, how many dollars are we paying per dollar?')
 st.caption('0.66 / (Price/NCAVPS)')
 NCAVPS = newdf[['Ticker','Name','0,66/NCAVPS/Price']].sort_values(by=['0,66/NCAVPS/Price'], ascending=False)
 #NCAVPS.sort_values(by=['0,66/NCAVPS/Price'])

@@ -456,21 +456,21 @@ st.markdown("![Alt Text](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)"
 
 st.caption('Stability')
 st.caption('Total uninterrupted years with dividend / 10')
-stab = habadf[['Ticker','Name','Total uninterrupted years with dividend / 10']].sort_values(by=['Total uninterrupted years with dividend / 10'], ascending=False)
+stab = newdf[['Ticker','Name','Total uninterrupted years with dividend/10']].sort_values(by=['Total uninterrupted years with dividend/10'], ascending=False)
 stab
 
 st.caption('Growth')
 st.caption('[Dividend CAGR over past 20 years] + 1')
-gro = habadf[['Ticker','Name','[Dividend CAGR over past 20 years] + 1']].sort_values(by=['[Dividend CAGR over past 20 years] + 1'], ascending=False)
+gro = newdf[['Ticker','Name','Dividend CAGR past 20y']].sort_values(by=['Dividend CAGR past 20y'], ascending=False)
 gro
 
 st.caption('Profitability')
 st.caption('Dividend Yield = [payout per share / price per share] / 0.02')
-prof1 = habadf[['Ticker','Name','[Dividend Yield = [payout per share / price per share] / 0.02']].sort_values(by=['Dividend Yield = [payout per share / price per share] / 0.02'], ascending=False)
+prof1 = newdf[['Ticker','Name','Dividend Yield / 0.02']].sort_values(by=['Dividend Yield / 0.02'], ascending=False)
 prof1
 
 st.caption('[AAA bond yield / 1.5 x Dividend Yield]')
-prof2 = habadf[['Ticker','Name','[AAA bond yield / 1.5 x Dividend Yield]']].sort_values(by=['[AAA bond yield / 1.5 x Dividend Yield]'], ascending=False)
+prof2 = newdf[['Ticker','Name','AAA bond yield / 1.5 x Dividend Yield']].sort_values(by=['AAA bond yield / 1.5 x Dividend Yield'], ascending=False)
 prof2
 
 st.caption('([Payout/Earnings] / Dividend Yield) / 25')

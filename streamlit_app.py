@@ -350,8 +350,8 @@ st.caption('HIGHER IS BETTER. ALL METRICS = 1 WHEN THEY MEET GRAHAMS EXPECTATION
 st.subheader('Price-to-NCAV')
 st.caption('Ignoring things like factories and equipment, how many dollars are we paying per dollar?')
 st.caption('0.66 / (Price/NCAVPS)')
-NCAVPS = newdf[['Ticker','Name','0,66/NCAVPS/Price']]
-NCAVPS.sort_values(by=['0,66/NCAVPS/Price'])
+NCAVPS = newdf[['Ticker','Name','0,66/NCAVPS/Price']].sort_values(by=['0,66/NCAVPS/Price'])
+#NCAVPS.sort_values(by=['0,66/NCAVPS/Price'])
 NCAVPS
 
 st.subheader('Grahams number')

@@ -113,7 +113,7 @@ for ticker in sp_list:
         NI = ist.loc['netIncome'][0]
         NE = ist.loc['netIncome'].mean(skipna = True)
         NE3 = ist.loc['netIncome'][:3].mean(skipna = True)
-        IE = ist.loc['interestExpense'][0]
+        IE = ist.loc['interestExpense'][0].dropna()
 
         TL = bs.loc['totalLiab'][0]
         TL3 = bs.loc['totalLiab'][:3]

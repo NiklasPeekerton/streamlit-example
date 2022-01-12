@@ -192,7 +192,7 @@ for ticker in sp_list:
             eps.append([ticker,date,epsactual])
 
         Earndf = pd.DataFrame(eps, columns=['Ticker','Date','EPS'])
-        Earndf.loc[(df!=0).any(axis=1)]
+        
         #EPS CAGR for the past 10 years
         Earndf['Date'] = pd.to_datetime(Earndf['Date'])
         Earndf['Date'] = Earndf['Date'].dt.year

@@ -24,7 +24,7 @@ Price = {}
 def fetch_data():
     for ticker in tqdm(sp_list):
         try:
-            fin = si.get_financials(ticker, yearly=True)
+            fin = si.get_financials(ticker, yearly=True, quarterly=False)
             qut = si.get_quote_data(ticker)
             div = si.get_dividends(ticker)
             earn = si.get_earnings_history(ticker)
@@ -157,7 +157,7 @@ for ticker in sp_list:
         elif div.index.year[-1] == 2021:
             a = div.groupby(div.index.year).sum()
             since2001 = a.loc[2001:]
-            DCAGR = ((((since2001.iloc[-1]/since2001.iloc[0])**(1/len(since2001.index))-1)*100)+1)[0]
+            DCAGR = ((((since2001.iloc[-1]/since2001.iloc[0])**(1/len(since2001.index))-1))+1)[0]
 
             data= a.index
             df=pd.DataFrame(data,columns=['col1'])

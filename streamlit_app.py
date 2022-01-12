@@ -196,8 +196,9 @@ for ticker in sp_list:
         #EPS CAGR for the past 10 years
         Earndf['Date'] = pd.to_datetime(Earndf['Date'])
         Earndf['Date'] = Earndf['Date'].dt.year
-        avgeps = Earndf.groupby('Date').mean().dropna()
-        sumeps = Earndf.groupby('Date').sum().dropna()
+        Earndf2 = Earndf.dropna()
+        avgeps = Earndf2.groupby('Date').mean()
+        sumeps = Earndf2.groupby('Date').sum()
         sumeps5 = sumeps.iloc[-6:-1]
         sumeps10 = sumeps.iloc[-11:-1]
         avgeps10 = avgeps.iloc[-10:]

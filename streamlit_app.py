@@ -475,7 +475,7 @@ st.markdown("![Alt Text](https://media.giphy.com/media/DqhwoR9RHm3EA/giphy.gif)"
 st.caption('10-year CAGR / 0.07')
 st.caption('Work In Progress')
 st.markdown("![Alt Text](https://media.giphy.com/media/5Zesu5VPNGJlm/giphy.gif)")
-ecagr = newdf[['Ticker','Name','ECAGR7dec']].sort_values(by=['ECAGR7dec'], ascending=False)
+ecagr = habadf[['Ticker','Name','ECAGR7dec']].sort_values(by=['ECAGR7dec'], ascending=False)
 ecagr
 
 st.caption('"[Normalized Earnings / Normalized Revenue for last 3 years] / [1.5 * Same from 10 years earlier]"')

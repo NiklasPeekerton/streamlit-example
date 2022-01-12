@@ -24,7 +24,7 @@ Price = {}
 def fetch_data():
     for ticker in tqdm(sp_list):
         try:
-            fin = si.get_financials(ticker)
+            fin = si.get_financials(ticker, yearly=True)
             qut = si.get_quote_data(ticker)
             div = si.get_dividends(ticker)
             earn = si.get_earnings_history(ticker)

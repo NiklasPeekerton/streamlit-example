@@ -202,7 +202,7 @@ for ticker in sp_list:
         avgeps10 = avgeps.iloc[-10:]
         ECAGRproc = ((((sumeps10.iloc[-1]/sumeps10.iloc[0])**(1/len(sumeps10.index))-1)*100))[0]
         ECAGRdec = ((((sumeps10.iloc[-1]/sumeps10.iloc[0])**(1/len(sumeps10.index))-1)))[0]
-        ECAGR7dec = ECAGR/0.07
+        ECAGR7dec = ECAGRdec/0.07
         #avgeps10.iloc[-1]
 
 

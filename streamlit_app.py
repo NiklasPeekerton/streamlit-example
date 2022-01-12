@@ -196,9 +196,13 @@ for ticker in sp_list:
         Earndf['Date'] = pd.to_datetime(Earndf['Date'])
         Earndf['Date'] = Earndf['Date'].dt.year
         avgeps = Earndf.groupby('Date').mean().dropna()
+        sumeps = Earndf.groupby('Date').sum().dropna()
+        sumeps5 = sumeps.iloc[-6:-1]
+        sumeps10 = sumeps.iloc[-11:-1]
         avgeps10 = avgeps.iloc[-10:]
-        ECAGR = ((((avgeps10.iloc[-1]/avgeps10.iloc[0])**(1/len(avgeps10.index))-1)*100))[0]
-        ECAGR7 = ECAGR/0.07
+        ECAGRproc = ((((sumeps10.iloc[-1]/sumeps10.iloc[0])**(1/len(sumeps10.index))-1)*100))[0]
+        ECAGRdec = ((((sumeps10.iloc[-1]/sumeps10.iloc[0])**(1/len(sumeps10.index))-1)))[0]
+        ECAGR7dec = ECAGR/0.07
         #avgeps10.iloc[-1]
 
 
@@ -223,8 +227,7 @@ for ticker in sp_list:
         price = Pricej[ticker]
         price.index = price.index.year
         pricemean = price.groupby(price.index).mean()
-        sumeps = Earndf.groupby('Date').sum().dropna()
-        sumeps5 = sumeps.iloc[-6:-1]
+        
         PEepssum = pricemean['close']/sumeps5['EPS']
 
         highlowPE = PEepssum.max()/PEepssum.min()
@@ -232,7 +235,7 @@ for ticker in sp_list:
         haba.append([ticker,LN, MP, PE, SO, FL, FH, ETTM, BV, PB, ADR, ADY, 
              TR, NR, NR3, NI, NE, NE3, IE, TL, TCA, TCL, LTD, TSE, IA, 
              TA, dayzz, NegEC, DCAGR, Divyears, norm3decline10,
-            EPS3BVPS3, PEDY25, highlowPE])
+            EPS3BVPS3, PEDY25, highlowPE, ECAGR7dec])
 
 
 
@@ -276,7 +279,8 @@ habadf = pd.DataFrame(haba, columns= ['Ticker',
                                          'Normalized 3-year per share earnings / [largest decline of the past 10 years]',
                                          '3-Year Normalized: Earnings-per-share / Book Value per share',
                                          '([Payout/Earnings] / Dividend Yield) / 25',
-                                         '[Highest P/E] / [lowest P/E] (considering the past 4 years)'
+                                         '[Highest P/E] / [lowest P/E] (considering the past 4 years)',
+                                         'ECAGR7dec'
                                         ])
  #0.4 / ((Current P/E) / Highest P/E in the last 5 years.), I'll 4 for now instead
 habadf['currhighPE'] = 0.4/((habadf['Trailing PE'])/(PEepssum.max()))
@@ -471,6 +475,8 @@ st.markdown("![Alt Text](https://media.giphy.com/media/DqhwoR9RHm3EA/giphy.gif)"
 st.caption('10-year CAGR / 0.07')
 st.caption('Work In Progress')
 st.markdown("![Alt Text](https://media.giphy.com/media/5Zesu5VPNGJlm/giphy.gif)")
+ecagr = newdf[['Ticker','Name','ECAGR7dec']].sort_values(by=['ECAGR7dec'], ascending=False)
+ecagr
 
 st.caption('"[Normalized Earnings / Normalized Revenue for last 3 years] / [1.5 * Same from 10 years earlier]"')
 st.caption('Cant do since we dont have data for revenue more than 4 years back')

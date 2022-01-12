@@ -22,7 +22,7 @@ Price = {}
 #Fetches data. Cache somehow?
 
 def fetch_data():
-    for ticker in tqdm(dow_list):
+    for ticker in tqdm(sp_list):
         try:
             fin = si.get_financials(ticker)
             qut = si.get_quote_data(ticker)

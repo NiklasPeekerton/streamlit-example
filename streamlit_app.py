@@ -101,7 +101,7 @@ keysQ = ['longName', 'regularMarketPrice', 'trailingPE', 'sharesOutstanding', 'f
 haba = []
 
 yearnow = pd.Timestamp.now().year
-for ticker in dow_list:
+for ticker in sp_list:
     try:
         IncomeStatement = Financialsj[ticker]['yearly_income_statement']
         ist = IncomeStatement.reindex(keysIS)

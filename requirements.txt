@@ -3,6 +3,5 @@ pandas
 streamlit
 yahoo_fin
 tqdm
-pickle
 datetime
 numpy

@@ -140,7 +140,8 @@ for ticker in sp_list:
         
 
         #Years of earnings decline
-        NegEarn = dayz.diff(periods=-1)
+        inc = ist.loc['netIncome']
+        NegEarn = inc.diff(periods=-1)
         NegEC = np.sum((NegEarn < 0).values.ravel())
 
         #Dividend CAGR & years of uninterrupted dividends

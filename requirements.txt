@@ -2,3 +2,7 @@ altair
 pandas
 streamlit
 yahoo_fin
+tqdm.notebook
+pickle
+datetime
+numpy

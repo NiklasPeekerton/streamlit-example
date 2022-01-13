@@ -137,7 +137,13 @@ for ticker in sp_list:
         ADR = Quotej.get(ticker).get('trailingAnnualDividendRate')
         ADY = Quotej.get(ticker).get('trailingAnnualDividendYield')
 
-        
+        #Years since last loss
+        dayz = ist.loc['netIncome']
+        dayztest = np.any(ist.loc['netIncome'] <0)
+        if dayztest == True:
+            dayzz = yearnow - dayz.index[dayz <0].year[0]
+        else:
+            dayzz = None
 
         #Years of earnings decline
         NegEarn = dayz.diff(periods=-1)
@@ -200,14 +206,6 @@ for ticker in sp_list:
         ECAGRdec = ((((sumeps10.iloc[-1]/sumeps10.iloc[0])**(1/len(sumeps10.index))-1)))[0]
         ECAGR7dec = ECAGRdec/0.07
         #avgeps10.iloc[-1]
-        
-        #Years since last loss
-        dayz = Earndf.loc['EPS']
-        dayztest = np.any(Earndf.loc['EPS'] <0)
-        if dayztest == True:
-            dayzz = yearnow - dayz.index[dayz <0].year[0]
-        else:
-            dayzz = None
 
 
         #([Normalized earnings from the last 3 years] / [Same from 10 years earlier]) / 1.3

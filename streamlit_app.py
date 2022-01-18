@@ -358,7 +358,7 @@ newdf['Dividend CAGR past 20y'] = habadf['Dividend CAGR past 20y']
 newdf['Dividend Yield / 0.02'] = habadf['Trailing Annual Dividend Yield']/0.02
 newdf['AAA bond yield / 1.5 x Dividend Yield'] =  (1.5*habadf['Trailing Annual Dividend Yield'])/0.0261
 #([Payout/Earnings] / Dividend Yield) / 25, DONE
-newdf['15 / (P/E)'] = 15/habadf['Trailing PE']
+newdf['15 / (P/E)'] = 15/habadf['PE calculated from EPS']
 #0.4 / ((Current P/E) / Highest P/E in the last 5 years.)
 
 

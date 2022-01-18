@@ -328,7 +328,7 @@ WC = habadf['Current Assets']-habadf['Current Liabilities']
 
 newdf = pd.DataFrame(habadf['Ticker'])
 newdf['Name'] = habadf['Name']
-newdf['Trailing PE'] = habadf['Trailing PE']
+#newdf['Trailing PE'] = habadf['Trailing PE']
 newdf['Our own PE'] = habadf['PE calculated from EPS']
 newdf['NCAV'] = NCAV
 newdf['NCAVPS'] = (NCAV)/(habadf['Shares Outstanding'])

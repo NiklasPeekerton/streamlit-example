@@ -241,7 +241,8 @@ for ticker in sp_list:
 
         highlowPE = PEepssum.max()/PEepssum.min()
         
-        haba.append([ticker,LN, MP, PE, SO, FL, FH, ETTM, BV, PB, ADR, ADY, 
+        haba.append([ticker,LN, MP, #PE,
+                     SO, FL, FH, ETTM, BV, PB, ADR, ADY, 
              TR, NR, NR3, NI, NE, NE3, IE, TL, TCA, TCL, LTD, TSE, IA, 
              TA, dayzz, NegEC, DCAGR, Divyears, norm3decline10,
             EPS3BVPS3, PEDY25, highlowPE, ECAGR7dec, PE2[0]])

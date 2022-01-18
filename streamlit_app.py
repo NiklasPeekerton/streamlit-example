@@ -251,6 +251,9 @@ for ticker in sp_list:
 
     except Exception as e:
         print(ticker, e)
+        
+    except ValueError as ve:
+        print(ticker, ve)
 
 
 

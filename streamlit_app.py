@@ -262,7 +262,7 @@ for ticker in sp_list:
 habadf = pd.DataFrame(haba, columns= ['Ticker',
                                          'Name',
                                          'Market Price',
-                                         'Trailing PE',
+                                         #'Trailing PE',
                                          'Shares Outstanding',
                                          'Fifty Two Week Low',
                                          'Fifty Two Week High',
@@ -294,7 +294,7 @@ habadf = pd.DataFrame(haba, columns= ['Ticker',
                                          '([Payout/Earnings] / Dividend Yield) / 25',
                                          '[Highest P/E] / [lowest P/E] (considering the past 4 years)',
                                          'ECAGR7dec',
-                                         'PE calculated from EPS',
+                                         'PE calculated from EPS'
                                         ])
  #0.4 / ((Current P/E) / Highest P/E in the last 5 years.), I'll 4 for now instead
 habadf['currhighPE'] = 0.4/((habadf['PE calculated from EPS'])/(PEepssum.max()))

@@ -127,7 +127,7 @@ for ticker in sp_list:
 
         LN = Quotej.get(ticker).get('longName')
         MP = Quotej.get(ticker).get('regularMarketPrice')
-        PE = Quotej.get(ticker).get('trailingPE')
+        #PE = Quotej.get(ticker).get('trailingPE')
         SO = Quotej.get(ticker).get('sharesOutstanding')
         FL = Quotej.get(ticker).get('fiftyTwoWeekLow')
         FH = Quotej.get(ticker).get('fiftyTwoWeekHigh')
@@ -234,6 +234,9 @@ for ticker in sp_list:
         price.index = price.index.year
         pricemean = price.groupby(price.index).mean()
         
+        #Our own PE, calculated from the sum of the previous 4 quarters EPS and dividing the price with that number. Differs from Yahoo finance own calculation
+        PE2 = MP/sumeps[-1:].iloc[0]
+        
         PEepssum = pricemean['close']/sumeps5['EPS']
 
         highlowPE = PEepssum.max()/PEepssum.min()
@@ -241,7 +244,7 @@ for ticker in sp_list:
         haba.append([ticker,LN, MP, PE, SO, FL, FH, ETTM, BV, PB, ADR, ADY, 
              TR, NR, NR3, NI, NE, NE3, IE, TL, TCA, TCL, LTD, TSE, IA, 
              TA, dayzz, NegEC, DCAGR, Divyears, norm3decline10,
-            EPS3BVPS3, PEDY25, highlowPE, ECAGR7dec])
+            EPS3BVPS3, PEDY25, highlowPE, ECAGR7dec, PE2[0]])
 
 
 
@@ -289,7 +292,7 @@ habadf = pd.DataFrame(haba, columns= ['Ticker',
                                          'ECAGR7dec'
                                         ])
  #0.4 / ((Current P/E) / Highest P/E in the last 5 years.), I'll 4 for now instead
-habadf['currhighPE'] = 0.4/((habadf['Trailing PE'])/(PEepssum.max()))
+habadf['currhighPE'] = 0.4/((habadf['PE calculated from EPS'])/(PEepssum.max()))
 
 
 
@@ -311,7 +314,7 @@ habadf['yearlowhigh'] = (habadf['Fifty Two Week High']-habadf['Market Price'])/(
 
 
 #20 / Trailing 12-month P/E
-habadf['twentydivPE'] = 20 / habadf['Trailing PE']
+habadf['twentydivPE'] = 20 / habadf['PE calculated from EPS']
 
 
 
@@ -321,6 +324,7 @@ WC = habadf['Current Assets']-habadf['Current Liabilities']
 newdf = pd.DataFrame(habadf['Ticker'])
 newdf['Name'] = habadf['Name']
 newdf['Trailing PE'] = habadf['Trailing PE']
+newdf['Our own PE'] = habadf['PE calculated from EPS']
 newdf['NCAV'] = NCAV
 newdf['NCAVPS'] = (NCAV)/(habadf['Shares Outstanding'])
 newdf['0,66/NCAVPS/Price'] = 0.66/(habadf['Market Price']/newdf['NCAVPS'])
@@ -333,8 +337,8 @@ newdf['Working capital / Long Term (non-current) debt'] = WC / habadf['Long Term
 newdf['Years since most recent loss /5'] = habadf['Years since loss']/5
 newdf['Total Revenue / 500M'] = habadf['TotalRevenue']/500000000
 newdf['Total Revenue / Mean'] = habadf['TotalRevenue']/habadf['TotalRevenue'].mean()
-newdf['MA/(P/E)'] = habadf['Trailing PE'].mean()/habadf['Trailing PE']
-newdf['Grahams number'] = (22.5/(habadf['Trailing PE']*habadf['Price to Book']))
+newdf['MA/(P/E)'] = habadf['PE calculated from EPS'].mean()/habadf['PE calculated from EPS']
+newdf['Grahams number'] = (22.5/(habadf['PE calculated from EPS']*habadf['Price to Book']))
 newdf['(4 - [Number of last 4 years with an earnings decline]) / 4'] = (4-habadf['Years of earnings decline'])/4
 #newdf['Normalized 3-year per share earnings / [largest decline of the past 10 years]'] = DONE
 #([Normalized earnings from the last 3 years] / [Same from 10 years earlier]) / 1.3, DONE
@@ -380,22 +384,27 @@ overall = newdf[['Ticker','Name','Overall score']].sort_values(by=['Overall scor
 overall
 
 st.subheader('Intrinsic value')
+st.caption('Out of 2')
 intrinsic = newdf[['Ticker','Name','Intrinsic value']].sort_values(by=['Intrinsic value'], ascending=False)
 intrinsic
 
 st.subheader('Financial situation')
+st.caption('Out of 8')
 financial = newdf[['Ticker','Name','Financial situation']].sort_values(by=['Financial situation'], ascending=False)
 financial
 
 st.subheader('Earnings')
+st.caption('Out of 8')
 earnings = newdf[['Ticker','Name','Earnings']].sort_values(by=['Earnings'], ascending=False)
 earnings
 
 st.subheader('Dividends')
+st.caption('Out of 5')
 dividends = newdf[['Ticker','Name','Dividends']].sort_values(by=['Dividends'], ascending=False)
 dividends
 
 st.subheader('Relative price')
+st.caption('Out of 5')
 price = newdf[['Ticker','Name','Relative price']].sort_values(by=['Relative price'], ascending=False)
 price
 

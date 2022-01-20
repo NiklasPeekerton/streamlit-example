@@ -74,14 +74,7 @@ def app():
 
 
 
-    from datetime import datetime
-    import pandas as pd
-    from yahoo_fin import stock_info as si
-    import numpy as np
-    import pickle
-    #import streamlit as st
-    sp_list = si.tickers_sp500()
-    dow_list = si.tickers_dow()
+
 
 
 

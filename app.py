@@ -1,6 +1,6 @@
 import streamlit as st
 from multiapp import MultiApp
-from apps import home, sp
+from apps import (home, sp)
 
 
 
@@ -12,8 +12,8 @@ apps = MultiApp()
 
 # Add all your application here
 
-apps.add_app("Home", home)
-apps.add_app("S&P", sp)
+apps.add_app("Home", home.app)
+apps.add_app("S&P", sp.app)
 #apps.add_app("Dow Jones", dj.app)
 
 
@@ -21,8 +21,8 @@ apps.add_app("S&P", sp)
 apps.run()
 
 PAGES = {
-    "Home": home,
-    "SP 500": sp
+    "Home": home.app,
+    "SP 500": sp.app
 }
 st.sidebar.title('Navigation')
 selection = st.sidebar.radio("Go to", list(PAGES.keys()))

@@ -12,8 +12,8 @@ apps = MultiApp()
 
 # Add all your application here
 
-apps.add_app("Home", home.app)
-apps.add_app("S&P", sp.app)
+apps.add_app("Home", home)
+apps.add_app("S&P", sp)
 #apps.add_app("Dow Jones", dj.app)
 
 

@@ -1,6 +1,7 @@
 import streamlit as st
 from multiapp import MultiApp
-from apps import (home, sp)
+from apps import home
+from apps import sp
 
 
 

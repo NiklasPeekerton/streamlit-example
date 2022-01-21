@@ -15,9 +15,9 @@ def app():
     #df = fetch_data()
 
     #st.line_chart(df)
-    clicky = st.button('Fetch dataa')
+    clicks = st.button('Fetch data')
 
-    if clicky:
+    if clicks:
         fetch_data()
         st.write('Downloading data')
     with open('Financials.pkl','rb') as read_file:

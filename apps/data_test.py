@@ -3,6 +3,8 @@ import numpy as np
 import pandas as pd
 from data.data import fetch_data
 
+minilist = ['A', 'ACN']
+
 def app():
     st.title('Testing data fetch/read')
 
@@ -39,7 +41,7 @@ def app():
     haba = []
 
     yearnow = pd.Timestamp.now().year
-    for ticker in dow_list:
+    for ticker in minilist:
         try:
             IncomeStatement = Financialsj[ticker]['yearly_income_statement']
             ist = IncomeStatement.reindex(keysIS)

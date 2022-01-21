@@ -1,7 +1,7 @@
 import streamlit as st
 import numpy as np
 import pandas as pd
-from data.data import create_table
+from data.data import fetch_data
 
 def app():
     st.title('Data Stats')

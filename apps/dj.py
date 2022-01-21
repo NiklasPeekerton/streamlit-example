@@ -66,11 +66,7 @@ def fetch_data():
 
     return()
 
-clicky = st.button('Fetch data')
 
-if clicky:
-    fetch_data()
-    st.write('Downloading data')
 
 
 
@@ -84,6 +80,11 @@ if clicky:
 #@st.cache
 #def read_data():
 def app():
+    clicky = st.button('Fetch data')
+
+    if clicky:
+        fetch_data()
+        st.write('Downloading data')
     with open('Financials.pkl','rb') as read_file:
         Financialsj = pickle.load(read_file)
 

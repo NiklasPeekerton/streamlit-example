@@ -7,12 +7,7 @@ import pathlib
 
 minilist = ['A', 'ACN']
 
-STREAMLIT_STATIC_PATH = pathlib.Path(st.__path__[0]) / "static"
-# We create a downloads directory within the streamlit static asset directory
-# and we write output files to it
-DOWNLOADS_PATH = STREAMLIT_STATIC_PATH / "downloads"
-if not DOWNLOADS_PATH.is_dir():
-    DOWNLOADS_PATH.mkdir()
+
 
 def app():
     st.title('Testing data fetch/read')
@@ -28,7 +23,7 @@ def app():
     if clicks:
         fetch_data()
         st.write('Downloading data')
-    with open('DOWNLOADS_PATH'+'Financials.pkl','rb') as read_file:
+    with open('Financials.pkl','rb') as read_file:
         Financialsj = pickle.load(read_file)
 
     with open('Quote.pkl','rb') as read_file:

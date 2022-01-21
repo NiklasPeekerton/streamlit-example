@@ -14,7 +14,7 @@ def app():
 
     st.write("Should contain data from 2 stocks at the moment")
 
-    st.markdown("### Plot Data")
+    #st.markdown("### Plot Data")
     #df = fetch_data()
 
     #st.line_chart(df)
@@ -243,3 +243,5 @@ def app():
      #0.4 / ((Current P/E) / Highest P/E in the last 5 years.), I'll 4 for now instead
     habadf['currhighPE'] = 0.4/((habadf['PE calculated from EPS'])/(PEepssum.max()))
     habadf
+    
+    st.write("Does it get this far")

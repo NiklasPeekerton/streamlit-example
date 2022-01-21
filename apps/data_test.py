@@ -48,4 +48,6 @@ def app():
             BalanceSheet = Financialsj[ticker]['yearly_balance_sheet']
             bs = BalanceSheet.reindex(keysBS)
             TR = ist.loc['totalRevenue'][0]
+        except Exception as e:
+            print(ticker, e)
     TR

@@ -15,7 +15,7 @@ def app():
     #df = fetch_data()
 
     #st.line_chart(df)
-    clicky = st.button('Fetch data')
+    clicky = st.button('Fetch dataa')
 
     if clicky:
         fetch_data()

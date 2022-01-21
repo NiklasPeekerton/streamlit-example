@@ -19,6 +19,8 @@ from streamlit_option_menu import option_menu
 #    menu_icon="cast", default_index=0, orientation="horizontal")
 #selected2
 
+DOWNLOADS_PATH
+
 
 sp_list = si.tickers_sp500()
 dow_list = si.tickers_dow()
@@ -46,7 +48,7 @@ def fetch_data():
         except Exception as e:
             print(ticker, e, 'contains sum bullshit')
 
-    with open('Financials.pkl', 'wb') as f:
+    with open('DOWNLOADS_PATH'+'Financials.pkl', 'wb') as f:
         pickle.dump(Financials, f)
 
     with open('Quote.pkl', 'wb') as f:

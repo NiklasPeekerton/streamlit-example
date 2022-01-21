@@ -22,7 +22,7 @@ from streamlit_option_menu import option_menu
 
 sp_list = si.tickers_sp500()
 dow_list = si.tickers_dow()
-
+minilist = ['A', 'ACN']
 
 Financials = {}
 Quote = {}
@@ -31,7 +31,7 @@ Earnings = {}
 Price = {}
 
 def fetch_data():
-    for ticker in tqdm(dow_list):
+    for ticker in tqdm(minilist):
         try:
             fin = si.get_financials(ticker, yearly=True, quarterly=False)
             qut = si.get_quote_data(ticker)

@@ -20,7 +20,7 @@ def app():
     if clicks:
         fetch_data()
         st.write('Downloading data')
-    with open('streamlit-example/data/Financials.pkl','rb') as read_file:
+    with open('data/Financials.pkl','rb') as read_file:
         Financialsj = pickle.load(read_file)
 
     with open('Quote.pkl','rb') as read_file:

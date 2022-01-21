@@ -1,7 +1,34 @@
 import pandas as pd
 import numpy as np
 from yahoo_fin import stock_info as si
+from tqdm.notebook import trange, tqdm
+import pickle
+import streamlit as st
+from datetime import datetime
+import streamlit as st
+from streamlit_option_menu import option_menu
 
+#with st.sidebar:
+#    selected = option_menu("Main Menu", ["Home", 'Settings'], 
+#        icons=['house', 'gear'], menu_icon="cast", default_index=1)
+#    selected
+
+# horizontal menu
+#selected2 = option_menu(None, ["Home", "Upload", "Tasks", 'Settings'], 
+#    icons=['house', 'cloud-upload', "list-task", 'gear'], 
+#    menu_icon="cast", default_index=0, orientation="horizontal")
+#selected2
+
+
+sp_list = si.tickers_sp500()
+dow_list = si.tickers_dow()
+
+
+Financials = {}
+Quote = {}
+Dividends = {}
+Earnings = {}
+Price = {}
 
 def fetch_data():
     for ticker in tqdm(dow_list):

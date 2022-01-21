@@ -12,4 +12,5 @@ def app():
     st.markdown("### Plot Data")
     df = fetch_data()
 
-    st.line_chart(df)
+    #st.line_chart(df)
+    df

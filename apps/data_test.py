@@ -3,6 +3,7 @@ import numpy as np
 import pandas as pd
 from data.data import fetch_data
 import pickle
+import pathlib
 
 minilist = ['A', 'ACN']
 

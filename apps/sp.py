@@ -23,6 +23,7 @@ from streamlit_option_menu import option_menu
 def app():
     sp_list = si.tickers_sp500()
     dow_list = si.tickers_dow()
+    minilist = ['A','AAPL']
 
 
     Financials = {}
@@ -34,7 +35,7 @@ def app():
     #Fetches data. Cache somehow?
 
     def fetch_data():
-        for ticker in tqdm(sp_list):
+        for ticker in tqdm(minilist):
             try:
                 fin = si.get_financials(ticker, yearly=True, quarterly=False)
                 qut = si.get_quote_data(ticker)
@@ -106,7 +107,7 @@ def app():
     haba = []
 
     yearnow = pd.Timestamp.now().year
-    for ticker in sp_list:
+    for ticker in minilist:
         try:
             IncomeStatement = Financialsj[ticker]['yearly_income_statement']
             ist = IncomeStatement.reindex(keysIS)

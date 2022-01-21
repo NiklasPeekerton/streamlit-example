@@ -19,7 +19,12 @@ from streamlit_option_menu import option_menu
 #    menu_icon="cast", default_index=0, orientation="horizontal")
 #selected2
 
-DOWNLOADS_PATH
+STREAMLIT_STATIC_PATH = pathlib.Path(st.__path__[0]) / "static"
+# We create a downloads directory within the streamlit static asset directory
+# and we write output files to it
+DOWNLOADS_PATH = STREAMLIT_STATIC_PATH / "downloads"
+if not DOWNLOADS_PATH.is_dir():
+    DOWNLOADS_PATH.mkdir()
 
 
 sp_list = si.tickers_sp500()

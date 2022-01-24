@@ -13,14 +13,14 @@ def app():
 
     st.title('Testing data fetch/read')
 
-    st.write("Should contain data from 2 stocks at the moment")
+    st.write("Should contain data from dowjones stocks at the moment")
 
     #st.markdown("### Plot Data")
     #df = fetch_data()
 
     #st.line_chart(df)
     #clicks = st.button('Fetch data', key='1')
-    newdf = fetch_data()
+    newdf = fetch_data(dow_list)
 
     #if clicks:
         #newdf = fetch_data()

@@ -18,16 +18,24 @@ def app():
     st.write("Should contain data from dowjones stocks at the moment")
 
     #st.markdown("### Plot Data")
-    #df = fetch_data()
+    dow = fetch_data(dow_list)
+    sp = fetch_data(sp_list)
+    clickdow = st.button('Fetch data', key='1')
+    if clickdow:
+        dow
+        st.write('Downloading data')
+    clicksp = st.button('Fetch data', key='2')
+    if clicksp:
+        sp
+        st.write('Downloading data')
+    
 
     #st.line_chart(df)
     #clicks = st.button('Fetch data', key='1')
     newdf = fetch_data(minilist)
 
-    #if clicks:
-        #newdf = fetch_data()
-        #newdf
-        #st.write('Downloading data')
+    
+    
     
     st.dataframe(newdf)
     

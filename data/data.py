@@ -33,6 +33,7 @@ Dividends = {}
 Earnings = {}
 Price = {}
 
+@st.cache
 def fetch_data():
     for ticker in tqdm(minilist):
         try:

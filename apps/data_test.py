@@ -6,7 +6,8 @@ import pickle
 import pathlib
 
 minilist = ['A', 'ACN']
-
+sp_list = si.tickers_sp500()
+dow_list = si.tickers_dow()
 
 
 def app():

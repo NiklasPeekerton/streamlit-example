@@ -205,7 +205,7 @@ def fetch_data(tickerlist):
             if dayztest == True:
                 dayzz = yearnow - dayz2.index[dayz <0][0]
             else:
-                dayzz = None
+                dayzz = 0
 
 
             #([Normalized earnings from the last 3 years] / [Same from 10 years earlier]) / 1.3

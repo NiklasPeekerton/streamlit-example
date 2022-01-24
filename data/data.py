@@ -144,7 +144,7 @@ def fetch_data(tickerlist):
             div = Dividendsj[ticker]
             if div.empty:
                 print(ticker, 'Has never had dividends')
-                DCAGR = None
+                DCAGR = 0
             elif div.index.year[-1] == 2021:
                 a = div.groupby(div.index.year).sum()
                 since2001 = a.loc[2001:]
@@ -165,8 +165,8 @@ def fetch_data(tickerlist):
                     else:
                         break
             else:
-                DCAGR = None
-                Divyears = None
+                DCAGR = 0
+                Divyears = 0
                 #print(DCAGR)
                 #print(ticker, 'Currently no dividends')
 

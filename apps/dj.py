@@ -246,12 +246,14 @@ def app():
             PEepssum = pricemean['close']/sumeps5['EPS']
 
             highlowPE = PEepssum.max()/PEepssum.min()
+            
+            PEmax = PEepssum.max()
 
             haba.append([ticker,LN, MP, #PE,
                          SO, FL, FH, ETTM, BV, PB, ADR, ADY, 
                  TR, NR, NR3, NI, NE, NE3, IE, TL, TCA, TCL, LTD, TSE, IA, 
                  TA, dayzz, NegEC, DCAGR, Divyears, norm3decline10,
-                EPS3BVPS3, PEDY25, highlowPE, ECAGR7dec, PE2[0]])
+                EPS3BVPS3, PEDY25, highlowPE, ECAGR7dec, PE2[0], PEmax])
 
 
 
@@ -300,10 +302,11 @@ def app():
                                              '([Payout/Earnings] / Dividend Yield) / 25',
                                              '[Highest P/E] / [lowest P/E] (considering the past 4 years)',
                                              'ECAGR7dec',
-                                             'PE calculated from EPS'
+                                             'PE calculated from EPS',
+                                             'PE max'
                                             ])
      #0.4 / ((Current P/E) / Highest P/E in the last 5 years.), I'll 4 for now instead
-    habadf['currhighPE'] = 0.4/((habadf['PE calculated from EPS'])/(PEepssum.max()))
+    habadf['currhighPE'] = 0.4/((habadf['PE calculated from EPS'])/habadf['PE max'])
 
 
 

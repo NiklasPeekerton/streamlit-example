@@ -34,8 +34,8 @@ Earnings = {}
 Price = {}
 
 @st.cache
-def fetch_data():
-    for ticker in tqdm(minilist):
+def fetch_data(tickerlist):
+    for ticker in tqdm(tickerlist):
         try:
             fin = si.get_financials(ticker, yearly=True, quarterly=False)
             qut = si.get_quote_data(ticker)
@@ -87,7 +87,7 @@ def fetch_data():
     haba = []
 
     yearnow = pd.Timestamp.now().year
-    for ticker in minilist:
+    for ticker in tickerlist:
         try:
             IncomeStatement = Financialsj[ticker]['yearly_income_statement']
             ist = IncomeStatement.reindex(keysIS)

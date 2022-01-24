@@ -42,8 +42,7 @@ def fetch_data(tickerlist):
     for ticker in tqdm(tickerlist):
         #my_bar.progress(len(tickerlist)-1)
         #for i in range(len(tickerlist)):
-        count = 0
-        my_bar.progress(count +=1)
+        my_bar.progress(+=1)
         try:
             fin = si.get_financials(ticker, yearly=True, quarterly=False)
             qut = si.get_quote_data(ticker)

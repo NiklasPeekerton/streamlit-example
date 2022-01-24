@@ -22,9 +22,10 @@ def app():
     clicks = st.button('Fetch data', key='1')
 
     if clicks:
-        fetch_data()
+        newdf = fetch_data()
+        newdf
         st.write('Downloading data')
     
-    st.dataframe(habadf)
+    st.dataframe(newdf)
     
     st.write("Does it get this far")

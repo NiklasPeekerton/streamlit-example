@@ -22,7 +22,7 @@ def app():
 
     #st.line_chart(df)
     #clicks = st.button('Fetch data', key='1')
-    newdf = fetch_data(dow_list)
+    newdf = fetch_data(minilist)
 
     #if clicks:
         #newdf = fetch_data()

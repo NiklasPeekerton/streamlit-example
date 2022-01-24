@@ -285,6 +285,7 @@ def fetch_data(tickerlist):
                                              'PE calculated from EPS',
                                              'Max PE'
                                             ])
+    newdf = pd.DataFrame(habadf['Ticker'])
      #0.4 / ((Current P/E) / Highest P/E in the last 5 years.), I'll 4 for now instead
     newdf['currhighPE'] = 0.4/((habadf['PE calculated from EPS'])/(habadf['Max PE']))
 
@@ -315,7 +316,7 @@ def fetch_data(tickerlist):
     NCAV = habadf['Current Assets']-habadf['Total Liabilities']
     WC = habadf['Current Assets']-habadf['Current Liabilities']
 
-    newdf = pd.DataFrame(habadf['Ticker'])
+    
     newdf['Name'] = habadf['Name']
     #newdf['Trailing PE'] = habadf['Trailing PE']
     newdf['Our own PE'] = habadf['PE calculated from EPS']

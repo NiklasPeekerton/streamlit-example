@@ -20,11 +20,12 @@ def app():
 
     #st.line_chart(df)
     clicks = st.button('Fetch data', key='1')
+    newdf = fetch_data()
 
-    if clicks:
-        newdf = fetch_data()
-        newdf
-        st.write('Downloading data')
+    #if clicks:
+        #newdf = fetch_data()
+        #newdf
+        #st.write('Downloading data')
     
     st.dataframe(newdf)
     

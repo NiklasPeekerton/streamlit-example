@@ -6,7 +6,7 @@ import pickle
 import pathlib
 from yahoo_fin import stock_info as si
 
-minilist = ['A', 'ACN', 'VLO', 'AMC']
+minilist = ['A', 'ACN', 'VLO', 'AMC', 'GME', 'AAPL']
 sp_list = si.tickers_sp500()
 dow_list = si.tickers_dow()
 

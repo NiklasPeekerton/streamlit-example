@@ -286,7 +286,7 @@ def fetch_data(tickerlist):
                                              'Max PE'
                                             ])
      #0.4 / ((Current P/E) / Highest P/E in the last 5 years.), I'll 4 for now instead
-    habadf['currhighPE'] = 0.4/((habadf['PE calculated from EPS'])/habadf['Max PE'])
+    newdf['currhighPE'] = 0.4/((habadf['PE calculated from EPS'])/habadf['Max PE'])
 
 
 
@@ -297,18 +297,18 @@ def fetch_data(tickerlist):
 
 
     #Book Value/Total Debt	(All assets - intangible assets - all liabilities - par value of senior issues) / Total Debt
-    habadf['BVTB'] = habadf['Book Value']/habadf['Total Liabilities']
+    newdf['BVTB'] = habadf['Book Value']/habadf['Total Liabilities']
 
 
 
     # (52WeekHigh - Current) / (Current - 52WeekLow)
-    habadf['yearlowhigh'] = (habadf['Fifty Two Week High']-habadf['Market Price'])/(habadf['Market Price']-habadf['Fifty Two Week Low'])
+    newdf['yearlowhigh'] = (habadf['Fifty Two Week High']-habadf['Market Price'])/(habadf['Market Price']-habadf['Fifty Two Week Low'])
 
     #25 / 7-year average P/E
 
 
     #20 / Trailing 12-month P/E
-    habadf['twentydivPE'] = 20 / habadf['PE calculated from EPS']
+    newdf['twentydivPE'] = 20 / habadf['PE calculated from EPS']
 
 
 
@@ -365,7 +365,7 @@ def fetch_data(tickerlist):
     newdf['Dividends'] = newdf['Total uninterrupted years with dividend/10'] + newdf['Dividend CAGR past 20y'] + newdf['Dividend Yield / 0.02'] + newdf['AAA bond yield / 1.5 x Dividend Yield'] + habadf['([Payout/Earnings] / Dividend Yield) / 25']
 
     #Relative price
-    newdf['Relative price'] = newdf['15 / (P/E)'] + habadf['[Highest P/E] / [lowest P/E] (considering the past 4 years)'] + habadf['yearlowhigh'] + habadf['twentydivPE'] + newdf['MA/(P/E)']# + habadf['currhighPE']
+    newdf['Relative price'] = newdf['15 / (P/E)'] + habadf['[Highest P/E] / [lowest P/E] (considering the past 4 years)'] + newdf['yearlowhigh'] + newdf['twentydivPE'] + newdf['MA/(P/E)']# + habadf['currhighPE']
 
     #Overall score
     newdf['Overall score'] = newdf['Intrinsic value'] + newdf['Financial situation'] + newdf['Earnings'] + newdf['Dividends'] + newdf['Relative price']

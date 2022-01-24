@@ -39,7 +39,7 @@ my_bar = st.progress(0)
 @st.cache
 def fetch_data(tickerlist):
     for ticker in tqdm(tickerlist):
-        my_bar.progress(ticker)
+        my_bar.progress(+1)
         try:
             fin = si.get_financials(ticker, yearly=True, quarterly=False)
             qut = si.get_quote_data(ticker)

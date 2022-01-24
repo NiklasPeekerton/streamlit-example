@@ -17,7 +17,7 @@ def app():
     Price = {}
 
     #Fetches data. Cache somehow?
-
+    minilist = ['A', 'ACN']
     def fetch_data():
         for ticker in tqdm(minilist):
             try:

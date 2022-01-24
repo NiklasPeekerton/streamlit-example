@@ -41,7 +41,7 @@ def fetch_data(tickerlist):
     
     for ticker in tqdm(tickerlist):
         #my_bar.progress(len(tickerlist)-1)
-        for i in range(len(ticker)):
+        for i in range(len(minilist)):
             my_bar.progress(i+1)
         try:
             fin = si.get_financials(ticker, yearly=True, quarterly=False)

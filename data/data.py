@@ -370,4 +370,4 @@ def fetch_data():
     newdf['Overall score'] = newdf['Intrinsic value'] + newdf['Financial situation'] + newdf['Earnings'] + newdf['Dividends'] + newdf['Relative price']
 
 
-    return(habadf, newdf)
+    return(newdf)

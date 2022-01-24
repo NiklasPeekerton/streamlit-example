@@ -318,6 +318,7 @@ def fetch_data(tickerlist):
 
     
     newdf['Name'] = habadf['Name']
+    newdf['ECAGR7dec'] = habadf['ECAGR7dec']
     #newdf['Trailing PE'] = habadf['Trailing PE']
     newdf['Our own PE'] = habadf['PE calculated from EPS']
     newdf['NCAV'] = NCAV

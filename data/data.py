@@ -69,4 +69,4 @@ def fetch_data():
     with open('Price.pkl', 'wb') as f:
         pickle.dump(Price, f)
 
-    return()
+    #return()

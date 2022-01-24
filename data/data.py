@@ -25,7 +25,7 @@ import pathlib
 
 sp_list = si.tickers_sp500()
 dow_list = si.tickers_dow()
-minilist = ['A', 'ACN']
+minilist = ['A', 'ACN', 'AAPL']
 
 Financials = {}
 Quote = {}

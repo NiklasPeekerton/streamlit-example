@@ -25,6 +25,7 @@ from data.data import fetch_data
 
 sp_list = si.tickers_sp500()
 dow_list = si.tickers_dow()
+minilist = ['A', 'ACN']
 
 
 
@@ -35,7 +36,7 @@ dow_list = si.tickers_dow()
 #@st.cache
 #def read_data():
 def app():
-    newdf = fetch_data(dow_list)
+    newdf = fetch_data(minilist)
 
  
 

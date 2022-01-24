@@ -286,7 +286,7 @@ def fetch_data(tickerlist):
                                              'Max PE'
                                             ])
      #0.4 / ((Current P/E) / Highest P/E in the last 5 years.), I'll 4 for now instead
-    newdf['currhighPE'] = 0.4/((habadf['PE calculated from EPS'])/habadf['Max PE'])
+    newdf['currhighPE'] = 0.4/((habadf['PE calculated from EPS'])/(habadf['Max PE']))
 
 
 

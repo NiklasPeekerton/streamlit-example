@@ -36,7 +36,7 @@ minilist = ['A', 'ACN']
 #@st.cache
 #def read_data():
 def app():
-    newdf = fetch_data(minilist)
+    newdf = fetch_data(dow_list)
 
  
 

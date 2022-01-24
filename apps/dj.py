@@ -390,11 +390,7 @@ def app():
 
 
 
-    clicky = st.button('Fetch data')
-
-    if clicky:
-        fetch_data()
-        st.write('Downloading data')
+ 
 
     st.title('Stonkotracker 5000')
 

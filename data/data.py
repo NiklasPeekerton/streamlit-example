@@ -35,11 +35,11 @@ Earnings = {}
 Price = {}
 
 my_bar = st.progress(0)
-num = len(tickerlist)
+
 
 @st.cache
 def fetch_data(tickerlist):
-    
+    num = len(tickerlist)
     for ticker in tqdm(tickerlist):
         for i in range(num):
             my_bar.progress((100//num)*i)

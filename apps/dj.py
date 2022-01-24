@@ -80,7 +80,7 @@ def fetch_data():
 #@st.cache
 #def read_data():
 def app():
-    clicky = st.button('Fetch data')
+    clicky = st.button('Fetch data', key='2')
 
     if clicky:
         fetch_data()

@@ -4,7 +4,7 @@ import pandas as pd
 from data.data import fetch_data
 import pickle
 import pathlib
-from streamlit import stock_info as si
+from yahoo_fin import stock_info as si
 
 minilist = ['A', 'ACN']
 sp_list = si.tickers_sp500()

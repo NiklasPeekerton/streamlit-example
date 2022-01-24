@@ -320,6 +320,7 @@ def fetch_data(tickerlist):
     newdf['Name'] = habadf['Name']
     newdf['ECAGR7dec'] = habadf['ECAGR7dec']
     newdf['3-Year Normalized: Earnings-per-share / Book Value per share'] = habadf['3-Year Normalized: Earnings-per-share / Book Value per share']
+    newdf['([Payout/Earnings] / Dividend Yield) / 25'] = habadf['([Payout/Earnings] / Dividend Yield) / 25']
     #newdf['Trailing PE'] = habadf['Trailing PE']
     newdf['Our own PE'] = habadf['PE calculated from EPS']
     newdf['NCAV'] = NCAV

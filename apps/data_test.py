@@ -37,6 +37,7 @@ def app():
 
     with open('Price.pkl','rb') as read_file:
         Pricej = pickle.load(read_file)
+    print(Financialsj)
 
     keysIS = ['totalRevenue', 'netIncome', 'interestExpense']
     keysBS = ['totalLiab', 'totalCurrentAssets', 'totalCurrentLiabilities', 'longTermDebt', 'totalStockholderEquity', 'intangibleAssets', 'totalAssets']

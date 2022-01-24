@@ -34,14 +34,14 @@ Dividends = {}
 Earnings = {}
 Price = {}
 
-my_bar = st.progress(0)
+
 
 @st.cache
 def fetch_data(tickerlist):
-    
+    my_bar = st.progress(0)
     for ticker in tqdm(tickerlist):
         #my_bar.progress(len(tickerlist)-1)
-        for i in range(len(minilist)):
+        for i in range(len(tickerlist)):
             my_bar.progress(i+1)
         try:
             fin = si.get_financials(ticker, yearly=True, quarterly=False)

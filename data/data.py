@@ -28,11 +28,16 @@ sp_list = si.tickers_sp500()
 dow_list = si.tickers_dow()
 minilist = ['A', 'ACN', 'AAPL']
 
-Financials = {}
-Quote = {}
-Dividends = {}
-Earnings = {}
-Price = {}
+if 'Price' in globals():
+    print('blö')
+else:
+    Financials = {}
+    Quote = {}
+    Dividends = {}
+    Earnings = {}
+    Price = {}
+    
+tickershave = list(Price.keys())
 
 my_bar = st.progress(0)
 
@@ -46,19 +51,23 @@ def fetch_data(tickerlist):
         #my_bar.progress(len(tickerlist)-1)
         #for i in range(len(tickerlist)):
         #my_bar.progress(+=1)
-        try:
-            fin = si.get_financials(ticker, yearly=True, quarterly=False)
-            qut = si.get_quote_data(ticker)
-            div = si.get_dividends(ticker)
-            earn = si.get_earnings_history(ticker)
-            price = si.get_data(ticker,interval='1mo')
-            Financials[ticker] = fin
-            Quote[ticker] = qut
-            Dividends[ticker] = div
-            Earnings[ticker] = earn
-            Price[ticker] = price
-        except Exception as e:
-            print(ticker, e, 'contains sum bullshit')
+        if ticker in tickershave:
+            print('already downloaded', ticker)
+        else:
+        
+            try:
+                fin = si.get_financials(ticker, yearly=True, quarterly=False)
+                qut = si.get_quote_data(ticker)
+                div = si.get_dividends(ticker)
+                earn = si.get_earnings_history(ticker)
+                price = si.get_data(ticker,interval='1mo')
+                Financials[ticker] = fin
+                Quote[ticker] = qut
+                Dividends[ticker] = div
+                Earnings[ticker] = earn
+                Price[ticker] = price
+            except Exception as e:
+                print(ticker, e, 'contains sum bullshit')
 
     with open('Financials.pkl', 'wb') as f:
         pickle.dump(Financials, f)

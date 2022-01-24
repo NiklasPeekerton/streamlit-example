@@ -302,7 +302,7 @@ habadf = pd.DataFrame(haba, columns= ['Ticker',
                                          'Max PE'
                                         ])
  #0.4 / ((Current P/E) / Highest P/E in the last 5 years.), I'll 4 for now instead
-habadf['currhighPE'] = 0.4/((habadf['PE calculated from EPS'])/(PEepssum.max()))
+habadf['currhighPE'] = 0.4/((habadf['PE calculated from EPS'])/habadf['Max PE'])
 
 
 

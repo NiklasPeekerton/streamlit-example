@@ -28,7 +28,7 @@ minilist = ['A','AAPL']
 
 
 def app():
-    newdf = fetch_data(dow_list)
+    newdf = fetch_data()
 
  
 

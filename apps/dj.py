@@ -400,7 +400,7 @@ def app():
     st.header('Overall scores')
     st.subheader('Overall score')
     overall = newdf[['Ticker','Name','Overall score']].sort_values(by=['Overall score'], ascending=False)
-    overall
+    st.dataframe(overall)
 
     st.subheader('Intrinsic value')
     st.caption('Out of 2')

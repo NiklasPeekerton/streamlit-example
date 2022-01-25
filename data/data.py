@@ -335,8 +335,8 @@ def fetch_data(tickerlist):
     NCAV = habadf['Current Assets']-habadf['Total Liabilities']
     WC = habadf['Current Assets']-habadf['Current Liabilities']
 
-    def weird_division(n, d):
-        return n / d if d else 0
+    #def weird_division(n, d):
+    #    return n / d if d else 0
     newdf['Name'] = habadf['Name']
     newdf['ECAGR7dec'] = habadf['ECAGR7dec']
     newdf['3-Year Normalized: Earnings-per-share / Book Value per share'] = habadf['3-Year Normalized: Earnings-per-share / Book Value per share']
@@ -350,7 +350,7 @@ def fetch_data(tickerlist):
     newdf['Book Value per share'] = habadf['Book Value']/habadf['Shares Outstanding']
     newdf['CurAss/2*CurLiab'] = habadf['Current Assets']/(2*habadf['Current Liabilities'])
     newdf['NCAV/TotDebt/1.1'] = (NCAV/habadf['Total Liabilities'])/1.1
-    newdf['NormEarn/7*InterestPay'] = weird_division(habadf['Normalized earnings'],(7*-habadf['Interest expense']))
+    newdf['NormEarn/7*InterestPay'] = (habadf['Normalized earnings']/(7*-habadf['Interest expense']))
     newdf['AllAss-AllLiab/AllLiab'] = (habadf['Total assets']-habadf['Total Liabilities'])/habadf['Total Liabilities']
     newdf['Working capital / Long Term (non-current) debt'] = WC / habadf['Long Term Debt']
     newdf['Years since most recent loss /5'] = habadf['Years since loss']/5

@@ -18,12 +18,12 @@ def app():
     st.write("Should contain data from dowjones stocks at the moment")
 
     #st.markdown("### Plot Data")
-    #dow = fetch_data(dow_list)
+    dow = fetch_data(dow_list)
     #sp = fetch_data(sp_list)
-    #clickdow = st.button('Fetch data', key='1')
-    #if clickdow:
-    #    dow
-    #    st.write('Downloading data')
+    clickdow = st.button('Fetch data', key='1')
+    if clickdow:
+        dow
+        st.write('Downloading data')
     #clicksp = st.button('Fetch data', key='2')
     #if clicksp:
     #    sp

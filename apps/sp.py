@@ -24,7 +24,7 @@ from data.data import fetch_data
 
 sp_list = si.tickers_sp500()
 dow_list = si.tickers_dow()
-minilist = ['A','AAPL']
+minilist = ['A','AAPL','C']
 
 
 

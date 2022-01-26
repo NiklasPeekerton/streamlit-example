@@ -19,17 +19,21 @@ def app():
 
     #st.markdown("### Plot Data")
     dow = fetch_data(dow_list)
-    #sp = fetch_data(sp_list)
-    clickdow = st.button('Fetch data', key='1')
+    sp = fetch_data(sp_list)
+    mini = fetch_data(minilist)
+    clickdow = st.button('Fetch data for Dow Jones', key='1')
     if clickdow:
         dow
         st.write('Downloading data')
-    #clicksp = st.button('Fetch data', key='2')
-    #if clicksp:
-    #    sp
-    #    st.write('Downloading data')
+    clicksp = st.button('Fetch data for S&P 500', key='2')
+    if clicksp:
+        sp
+        st.write('Downloading data')
     
-
+    clickmini = st.button('Fetch data for minilist', key='3')
+    if clickmini:
+        mini
+        st.write('Downloading data')
     #st.line_chart(df)
     #clicks = st.button('Fetch data', key='1')
     newdf = fetch_data(minilist)

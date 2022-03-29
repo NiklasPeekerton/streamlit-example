@@ -6,3 +6,4 @@ tqdm
 datetime
 numpy
 streamlit_option_menu
+click==8

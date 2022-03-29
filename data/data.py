@@ -252,7 +252,7 @@ def fetch_data(tickerlist):
                          SO, FL, FH, ETTM, BV, PB, ADR, ADY, 
                  TR, NR, NR3, NI, NE, NE3, IE, TL, TCA, TCL, LTD, TSE, IA, 
                  TA, dayzz, NegEC, DCAGR, Divyears, norm3decline10,
-                EPS3BVPS3, PEDY25, highlowPE, ECAGR7dec, PE2[0], PEsummax])
+                EPS3BVPS3, PEDY25, highlowPE, ECAGRdec, PE2[0], PEsummax])
 
 
 
@@ -300,7 +300,7 @@ def fetch_data(tickerlist):
                                              '3-Year Normalized: Earnings-per-share / Book Value per share',
                                              '([Payout/Earnings] / Dividend Yield) / 25',
                                              '[Highest P/E] / [lowest P/E] (considering the past 4 years)',
-                                             'ECAGR7dec',
+                                             'ECAGRdec',
                                              'PE calculated from EPS',
                                              'Max PE'
                                             ])
@@ -338,7 +338,8 @@ def fetch_data(tickerlist):
     #def weird_division(n, d):
     #    return n / d if d else 0
     newdf['Name'] = habadf['Name']
-    newdf['ECAGR7dec'] = habadf['ECAGR7dec']
+    newdf['ECAGR7dec'] = habadf['ECAGRdec']/0.07
+    newdf['Earnings Power'] = 1 + habadf['ECAGRdec'] + habadf['Trailing Annual Dividend Yield']
     newdf['3-Year Normalized: Earnings-per-share / Book Value per share'] = habadf['3-Year Normalized: Earnings-per-share / Book Value per share']
     newdf['([Payout/Earnings] / Dividend Yield) / 25'] = habadf['([Payout/Earnings] / Dividend Yield) / 25']
     newdf['[Highest P/E] / [lowest P/E] (considering the past 4 years)'] = habadf['[Highest P/E] / [lowest P/E] (considering the past 4 years)']

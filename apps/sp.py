@@ -142,7 +142,7 @@ def app():
     st.subheader('Earnings Power')
     st.caption('ECAGR for past 10 years + Trailing 12 months Dividend yield')
     #st.caption('(4 - [Number of last 4 years with an earnings decline]) / 4')
-    ep = newdf[['Ticker','Name','Earnings power']].sort_values(by=['Earnings power'], ascending=False)
+    ep = newdf[['Ticker','Name','Earnings Power']].sort_values(by=['Earnings Power'], ascending=False)
     st.dataframe(ep)
 
     st.subheader('Growth')

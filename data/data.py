@@ -399,7 +399,7 @@ def fetch_data(tickerlist):
 
     return(newdf)
 
-def read_data():
+def read_data(tickerlist):
     dividend = 'https://drive.google.com/file/d/1kg1cFbunr7qwoKm1QPYA38s0RnQd280W/view?usp=sharing'
     divpath = 'https://drive.google.com/uc?export=download&id='+dividend.split('/')[-2]
     divdict = pd.read_pickle(divpath)

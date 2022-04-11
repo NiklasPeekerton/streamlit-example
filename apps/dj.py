@@ -8,7 +8,7 @@ import pandas as pd
 import numpy as np
 import streamlit as st
 from streamlit_option_menu import option_menu
-from data.data import fetch_data
+from data.data import read_data
 
 
 #with st.sidebar:

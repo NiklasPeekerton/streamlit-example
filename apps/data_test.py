@@ -18,29 +18,11 @@ def app():
     st.write("Should contain data from dowjones stocks at the moment")
 
     #st.markdown("### Plot Data")
-    dow = fetch_data(dow_list)
-    sp = fetch_data(sp_list)
-    mini = fetch_data(minilist)
-    clickdow = st.button('Fetch data for Dow Jones', key='1')
-    if clickdow:
-        dow
-        st.write('Downloading data')
-    clicksp = st.button('Fetch data for S&P 500', key='2')
-    if clicksp:
-        sp
-        st.write('Downloading data')
-    
-    clickmini = st.button('Fetch data for minilist', key='3')
-    if clickmini:
-        mini
-        st.write('Downloading data')
-    #st.line_chart(df)
-    #clicks = st.button('Fetch data', key='1')
-    newdf = fetch_data(minilist)
-
+    url = 'https://drive.google.com/file/d/12g5pqOhB2l0bIdKGfKgJZg3QT1IaXll7/view?usp=sharing'
+    path = 'https://drive.google.com/uc?export=download&id='+url.split('/')[-2]
+    df = pd.read_csv(path)
     
     
-    
-    st.dataframe(newdf)
+    st.dataframe(df)
     
     st.write("Does it get this far")

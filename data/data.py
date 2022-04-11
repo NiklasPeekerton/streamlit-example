@@ -42,7 +42,7 @@ tickershave = list(Price.keys())
 my_bar = st.progress(0)
 
 
-@st.cache
+
 def fetch_data(tickerlist):
     num = len(tickerlist)
     for ticker in tqdm(tickerlist):
@@ -399,6 +399,7 @@ def fetch_data(tickerlist):
 
     return(newdf)
 
+@st.cache
 def read_data(tickerlist):
     dividend = 'https://drive.google.com/file/d/1kg1cFbunr7qwoKm1QPYA38s0RnQd280W/view?usp=sharing'
     divpath = 'https://drive.google.com/uc?export=download&id='+dividend.split('/')[-2]

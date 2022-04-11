@@ -18,11 +18,13 @@ def app():
     st.write("Should contain data from dowjones stocks at the moment")
 
     #st.markdown("### Plot Data")
-    url = 'https://drive.google.com/file/d/1MEznr9xkkj-fjgajdQHNJ3lPcL2KxmfQ/view?usp=sharing'
+    url = 'https://drive.google.com/file/d/1kg1cFbunr7qwoKm1QPYA38s0RnQd280W/view?usp=sharing'
     path = 'https://drive.google.com/uc?export=download&id='+url.split('/')[-2]
-    df = pd.read_csv(path, encoding='latin-1')
+    df = pd.read_pickle(path)
+
+    apple = df['AAPL']
     
     
-    st.dataframe(df)
+    st.dataframe(apple)
     
     st.write("Does it get this far")

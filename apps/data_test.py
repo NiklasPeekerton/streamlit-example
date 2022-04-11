@@ -18,7 +18,7 @@ def app():
     st.write("Should contain data from dowjones stocks at the moment")
 
     #st.markdown("### Plot Data")
-    url = 'https://drive.google.com/file/d/12g5pqOhB2l0bIdKGfKgJZg3QT1IaXll7/view?usp=sharing'
+    url = 'https://drive.google.com/file/d/1MEznr9xkkj-fjgajdQHNJ3lPcL2KxmfQ/view?usp=sharing'
     path = 'https://drive.google.com/uc?export=download&id='+url.split('/')[-2]
     df = pd.read_csv(path)
     

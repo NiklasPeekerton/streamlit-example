@@ -8,7 +8,7 @@ import pandas as pd
 import numpy as np
 import streamlit as st
 from streamlit_option_menu import option_menu
-from data.data import fetch_data
+from data.data import read_data
 
 #with st.sidebar:
 #    selected = option_menu("Main Menu", ["Home", 'Settings'], 
@@ -29,7 +29,7 @@ minilist = ['A','AAPL','C','SSNC', 'GEO', 'CXW', 'ZION', 'GD', 'UHAL', 'GOLD', '
 
 
 def app():
-    newdf = fetch_data(minilist)
+    newdf = read_data(sp_list)
 
  
 

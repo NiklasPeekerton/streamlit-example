@@ -364,7 +364,7 @@ def read_data(tickerlist):
     newdf['Relative price'] = newdf['15 / (P/E)'] + habadf['[Highest P/E] / [lowest P/E] (considering the past 4 years)'] + newdf['yearlowhigh'] + newdf['twentydivPE'] + newdf['MA/(P/E)']# + habadf['currhighPE']
 
     #Overall score
-    newdf['Overall score'] = newdf['Intrinsic value'] + newdf['Financial situation'] + newdf['Earnings'] + newdf['Dividends'] + newdf['Relative price']
+    newdf['Overall score'] = newdf['Intrinsic value'] + newdf['Financial situation'] + newdf['Earnings'] + newdf['Dividends'] #+ newdf['Relative price']
 
 
     return(newdf)

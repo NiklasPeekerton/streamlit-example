@@ -86,7 +86,7 @@ def read_data(tickerlist):
             NI = ist.loc['netIncome'][0]
             NE = ist.loc['netIncome'].mean(skipna = True)
             NE3 = ist.loc['netIncome'][:3].mean(skipna = True)
-            IE = ist.loc['interestExpense'].fillna(7*NE)[0]
+            IE = ist.loc['interestExpense'].fillna(NE/7)[0]
 
             TL = bs.loc['totalLiab'][0]
             TL3 = bs.loc['totalLiab'][:3]
@@ -319,7 +319,7 @@ def read_data(tickerlist):
     newdf['Book Value per share'] = habadf['Book Value']/habadf['Shares Outstanding']
     newdf['CurAss/2*CurLiab'] = habadf['Current Assets']/(2*habadf['Current Liabilities'])
     newdf['NCAV/TotDebt/1.1'] = (NCAV/habadf['Total Liabilities'])/1.1
-    newdf['NormEarn/7*InterestPay'] = (habadf['Normalized earnings']/(7*-habadf['Interest expense']))
+    newdf['NormEarn/7*InterestPay'] = (habadf['Normalized earnings']/(7*habadf['Interest expense']))
     newdf['AllAss-AllLiab/AllLiab'] = (habadf['Total assets']-habadf['Total Liabilities'])/habadf['Total Liabilities']
     newdf['Working capital / Long Term (non-current) debt'] = WC / habadf['Long Term Debt']
     newdf['Years since most recent loss /5'] = habadf['Years since loss']/5

@@ -1,7 +1,7 @@
 import streamlit as st
 import numpy as np
 import pandas as pd
-from data.data import fetch_data
+from data.data import read_data
 import pickle
 import pathlib
 from yahoo_fin import stock_info as si

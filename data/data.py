@@ -218,8 +218,8 @@ def read_data(tickerlist):
 
             haba.append([ticker,LN, MP, #PE,
                          SO, FL, FH, ETTM, BV, PB, ADR, ADY, 
-                 TR, NR, NR3, NI, NE, NE3, IE, TL, TCA, TCL, LTD, TSE, IA, 
-                 TA, dayzz, NegEC, DCAGR, Divyears, norm3decline10,
+                 TR, NR, NR3, NI, NE, NE3, IE, TA, TL, TCA, TCL, LTD, TSE, IA, 
+                  dayzz, NegEC, DCAGR, Divyears, norm3decline10,
                 EPS3BVPS3, PEDY25, highlowPE, ECAGRdec, PE2[0], PEsummax])
 
 

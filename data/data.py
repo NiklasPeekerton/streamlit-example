@@ -68,7 +68,7 @@ def read_data(tickerlist):
     
 
     keysIS = ['totalRevenue', 'netIncome', 'interestExpense']
-    keysBS = ['totalLiab', 'totalCurrentAssets', 'totalCurrentLiabilities', 'longTermDebt', 'totalStockholderEquity', 'intangibleAssets', 'totalAssets']
+    keysBS = ['totalLiab', 'totalCurrentAssets', 'totalCurrentLiabilities', 'longTermDebt', 'totalStockholderEquity', 'intangibleAssets', 'totalAssets', 'accountsPayable']
     keysQ = ['longName', 'regularMarketPrice', 'trailingPE', 'sharesOutstanding', 'fiftyTwoWeekRange', 'epsTrailingTwelveMonths', 'bookValue', 'priceToBook', 'trailingAnnualDividendRate', 'trailingAnnualDividendYield']
 
     haba = []
@@ -97,6 +97,7 @@ def read_data(tickerlist):
             IA = bs.loc['intangibleAssets'][0]
             TA = bs.loc['totalAssets'][0]
             TA3 = bs.loc['totalAssets'][:3]
+            AP = bs.loc['accountsPayable'][0]
 
             LN = quoteedict.get(ticker).get('longName')
             MP = quoteedict.get(ticker).get('regularMarketPrice')
@@ -220,7 +221,7 @@ def read_data(tickerlist):
                          SO, FL, FH, ETTM, BV, PB, ADR, ADY, 
                  TR, NR, NR3, NI, NE, NE3, IE, TA, TL, TCA, TCL, LTD, TSE, IA, 
                   dayzz, NegEC, DCAGR, Divyears, norm3decline10,
-                EPS3BVPS3, PEDY25, highlowPE, ECAGRdec, PE2[0], PEsummax])
+                EPS3BVPS3, PEDY25, highlowPE, ECAGRdec, PE2[0], PEsummax, AP])
 
 
 
@@ -270,7 +271,8 @@ def read_data(tickerlist):
                                              '[Highest P/E] / [lowest P/E] (considering the past 4 years)',
                                              'ECAGRdec',
                                              'PE calculated from EPS',
-                                             'Max PE'
+                                             'Max PE',
+                                             'Accounts payable'
                                             ])
     newdf = pd.DataFrame(habadf['Ticker'])
      #0.4 / ((Current P/E) / Highest P/E in the last 5 years.), I'll 4 for now instead
@@ -321,7 +323,7 @@ def read_data(tickerlist):
     newdf['NCAV/TotDebt/1.1'] = (NCAV/habadf['Total Liabilities'])/1.1
     newdf['NormEarn/7*InterestPay'] = (habadf['Normalized earnings']/(7*habadf['Interest expense']))
     newdf['AllAss-AllLiab/AllLiab'] = (habadf['Total assets']-habadf['Total Liabilities'])/habadf['Total Liabilities']
-    newdf['Working capital / Long Term (non-current) debt'] = WC / habadf['Long Term Debt']
+    newdf['Working capital / Long Term (non-current) debt'] = WC / (habadf['Long Term Debt']+habadf['Accounts payable'])
     newdf['Years since most recent loss /5'] = habadf['Years since loss']/5
     newdf['Total Revenue / 500M'] = habadf['TotalRevenue']/500000000
     newdf['Total Revenue / Mean'] = habadf['TotalRevenue']/habadf['TotalRevenue'].mean()

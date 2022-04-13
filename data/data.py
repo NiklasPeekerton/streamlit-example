@@ -28,14 +28,7 @@ sp_list = si.tickers_sp500()
 dow_list = si.tickers_dow()
 minilist = ['A', 'ACN', 'AAPL']
 
-if 'Price' in globals():
-    print('blö')
-else:
-    Financials = {}
-    Quote = {}
-    Dividends = {}
-    Earnings = {}
-    Price = {}
+
     
 
 my_bar = st.progress(0)

@@ -25,7 +25,7 @@ def app():
  
 
     st.title('FTSE 250')
-    st.subheader('The FTSE 250 Index is a capitalisation-weighted index consisting of the 101st to the 350th largest companies listed on the London Stock Exchange. Promotions and demotions to and from the index occur quarterly in March, June, September, and December. The Index is calculated in real-time and published every minute.')
+    st.caption('The FTSE 250 Index is a capitalisation-weighted index consisting of the 101st to the 350th largest companies listed on the London Stock Exchange. Promotions and demotions to and from the index occur quarterly in March, June, September, and December. The Index is calculated in real-time and published every minute.')
 
     st.header('Overall scores')
     st.subheader('Overall score')

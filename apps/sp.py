@@ -27,7 +27,7 @@ dow_list = si.tickers_dow()
 minilist = ['A','AAPL','C','SSNC', 'GEO', 'CXW', 'ZION', 'GD', 'UHAL', 'GOLD', 'UFCS']
 
 
-@st.cache
+#@st.cache
 def app():
     newdf = read_data(sp_list)
 

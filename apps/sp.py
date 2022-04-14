@@ -27,10 +27,16 @@ def app():
 
     st.header('Overall scores')
     st.subheader('Overall score')
+    dividends = newdf[['Ticker','Name','Dividends']].sort_values(by=['Dividends'], ascending=False)
     overall = newdf[['Ticker','Name','Overall score']].sort_values(by=['Overall score'], ascending=False)
-    b = alt.Chart(overall).mark_bar().encode(
+    frames = [overall,dividends]
+    divoverall = pd.concat(frames)
+    b = alt.Chart(divoverall).mark_circle(
+    color='red',
+    opacity=0.3
+    ).encode(
         alt.X('Overall score:Q'),
-        alt.Y('Name:O', sort='-x')).properties(height=700)
+        alt.Y('Dividends:Q', sort='-x')).properties(height=700)
     
 
     st.altair_chart(b, use_container_width=True)
@@ -53,7 +59,7 @@ def app():
 
     st.subheader('Dividends')
     st.caption('Out of 5')
-    dividends = newdf[['Ticker','Name','Dividends']].sort_values(by=['Dividends'], ascending=False)
+    
     st.dataframe(dividends)
 
     st.subheader('Relative price')

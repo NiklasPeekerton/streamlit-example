@@ -10,6 +10,7 @@ import streamlit as st
 from streamlit_option_menu import option_menu
 from data.data import read_data
 import altair as alt
+import plotly.tools
 
 
 sp_list = si.tickers_sp500()

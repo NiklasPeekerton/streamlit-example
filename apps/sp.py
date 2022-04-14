@@ -32,8 +32,8 @@ def app():
     frames = [overall,dividends]
     divoverall = pd.concat(frames)
     b = alt.Chart(divoverall).mark_circle(
-    color='red',
-    opacity=0.3
+    color='red'
+  
     ).encode(
         alt.X('Overall score:Q'),
         alt.Y('Dividends:Q', sort='-x')).properties(height=700)

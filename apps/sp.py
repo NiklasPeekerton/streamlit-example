@@ -37,7 +37,7 @@ def app():
         tooltip=['Name', 'Overall score'])
     
     stockscount = len(overall.index)
-    st.subheader(stockscount)
+    st.subheader('There are', stockscount, 'stocks in this list')
 
     st.altair_chart(c, use_container_width=True)
     

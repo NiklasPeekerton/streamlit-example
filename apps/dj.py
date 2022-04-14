@@ -35,9 +35,10 @@ def app():
     c = alt.Chart(overall).mark_circle().encode(
      x='Name', y='Overall score', size='Overall score', color='Overall score', tooltip=['Name', 'Overall score'])
     
-    bar = alt.Chart(overall).mark_bar().encode(
-    alt.X=('Name', sort='-y')
-    alt.Y=('Overall score')
+    alt.Chart(df).mark_bar().encode(
+        alt.X('Name:N', sort='-y'),
+        alt.Y('Overall score:Q'))
+    
 )
 
     st.altair_chart(bar, use_container_width=True)

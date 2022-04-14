@@ -36,8 +36,8 @@ def app():
      x='Name', y='Overall score', size='Overall score', color='Overall score', tooltip=['Name', 'Overall score'])
     
     bar = alt.Chart(overall).mark_bar().encode(
-    x=('Name', sort='-x')
-    y=('Overall score')
+    alt.X=('Name', sort='-y')
+    alt.Y=('Overall score')
 )
 
     st.altair_chart(bar, use_container_width=True)

@@ -32,7 +32,7 @@ def app():
     overall2 = overall[:20]
     divoverall = pd.merge(overall,dividends, on='Ticker')
     c = alt.Chart(overall2).mark_circle().encode(
-     x='Dividends', y='Overall score', #size='Overall score', 
+     x='Name', y='Overall score', #size='Overall score', 
         #color='Overall score', 
         tooltip=['Name', 'Overall score'])
     

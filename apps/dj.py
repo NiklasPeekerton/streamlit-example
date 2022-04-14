@@ -35,7 +35,7 @@ def app():
     c = alt.Chart(overall).mark_circle().encode(
      x='Name', y='Overall score', size='Overall score', color='Overall score', tooltip=['Name', 'Overall score'])
     
-    alt.Chart(df).mark_bar().encode(
+    alt.Chart(overall).mark_bar().encode(
         alt.X('Name:N', sort='-y'),
         alt.Y('Overall score:Q'))
     

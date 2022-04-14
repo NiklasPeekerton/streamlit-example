@@ -31,7 +31,7 @@ def app():
     overall = newdf[['Ticker','Name','Overall score']].sort_values(by=['Overall score'], ascending=False)
     overall2 = overall[:100]
     divoverall = pd.merge(overall,dividends, on='Ticker')
-    b = alt.Chart(overall2).mark_bar().encode(
+    c = alt.Chart(overall2).mark_bar().encode(
         alt.X('Name:N', sort='-y'),
         alt.Y('Overall score:Q'))
     

@@ -20,7 +20,7 @@ minilist = ['A', 'ACN']
 
 #@st.cache
 #def read_data():
-@st.cache
+#@st.cache
 def app():
     newdf = read_data(dow_list)
 

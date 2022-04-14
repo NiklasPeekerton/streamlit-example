@@ -31,12 +31,10 @@ def app():
     overall = newdf[['Ticker','Name','Overall score']].sort_values(by=['Overall score'], ascending=False)
     frames = [overall,dividends]
     divoverall = pd.concat(frames)
-    b = alt.Chart(divoverall).mark_circle(
-    color='red'
-  
-    ).encode(
+    b = alt.Chart(divoverall).mark_circle().encode(
         alt.X('Overall score:Q'),
-        alt.Y('Dividends:Q', sort='-x')).properties(height=700)
+        alt.Y('Dividends:Q')
+    )
     
 
     st.altair_chart(b, use_container_width=True)

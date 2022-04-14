@@ -29,11 +29,12 @@ def app():
     st.subheader('Overall score')
     dividends = newdf[['Ticker','Name','Dividends']].sort_values(by=['Dividends'], ascending=False)
     overall = newdf[['Ticker','Name','Overall score']].sort_values(by=['Overall score'], ascending=False)
+    overall2 = overall[:20]
     divoverall = pd.merge(overall,dividends, on='Ticker')
-    c = alt.Chart(divoverall).mark_circle().encode(
+    c = alt.Chart(overall2).mark_circle().encode(
      x='Dividends', y='Overall score', #size='Overall score', 
         #color='Overall score', 
-        tooltip=['Name', 'Overall score', 'Dividends'])
+        tooltip=['Name', 'Overall score'])
     
 
     st.altair_chart(c, use_container_width=True)

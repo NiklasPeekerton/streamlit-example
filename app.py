@@ -15,11 +15,11 @@ apps = MultiApp()
 
 # Add all your application here
 
-#apps.add_app("Home", home.app)
+apps.add_app("Home", home.app)
 apps.add_app("S&P", sp.app)
 apps.add_app("Dow Jones", dj.app)
-#apps.add_app("Data test", data_test.app)
 apps.add_app("Russell3000", Russell3000.app)
+apps.add_app("Data test", data_test.app)
 
 
 # The main app

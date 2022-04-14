@@ -40,7 +40,7 @@ def app():
         alt.Y('Overall score:Q'))
     
 
-    st.altair_chart(bar, use_container_width=True)
+    #st.altair_chart(bar, use_container_width=True)
     st.dataframe(overall)
 
     st.subheader('Intrinsic value')

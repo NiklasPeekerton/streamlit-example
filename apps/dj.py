@@ -32,7 +32,10 @@ def app():
     overall = newdf[['Ticker','Name','Overall score']].sort_values(by=['Overall score'], ascending=False)
     overallgraph = newdf[['Name','Overall score']].sort_values(by=['Overall score'], ascending=False)
     overall1 = overallgraph.to_dict()#.set_index('Name')
-    st.plotly_chart(overall['Overall score'], use_container_width=False, sharing="streamlit")
+    c = alt.Chart(overall).mark_circle().encode(
+     x='Name', y='Overall score', size='Overall score', color='Overall score', tooltip=['Name', 'Overall score'])
+
+    st.altair_chart(c, use_container_width=True)
     st.dataframe(overall['Overall score'])
 
     st.subheader('Intrinsic value')

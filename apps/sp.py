@@ -30,7 +30,7 @@ def app():
     overall = newdf[['Ticker','Name','Overall score']].sort_values(by=['Overall score'], ascending=False)
     b = alt.Chart(overall).mark_bar().encode(
         alt.X('Overall score:Q', sort='-y'),
-        alt.Y('Name:=O')).properties(height=700)
+        alt.Y('Name:O')).properties(height=700)
     
 
     st.altair_chart(b, use_container_width=True)

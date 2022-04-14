@@ -29,8 +29,7 @@ def app():
     st.subheader('Overall score')
     dividends = newdf[['Ticker','Name','Dividends']].sort_values(by=['Dividends'], ascending=False)
     overall = newdf[['Ticker','Name','Overall score']].sort_values(by=['Overall score'], ascending=False)
-    frames = [overall,dividends]
-    divoverall = pd.concat(frames, ignore_index=True, sort=False)
+    divoverall = pd.concat([overall,dividends], ignore_index=True, sort=False)
     c = alt.Chart(divoverall).mark_circle().encode(
      x='Dividends', y='Overall score', #size='Overall score', 
         #color='Overall score', 

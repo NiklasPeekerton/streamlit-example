@@ -35,12 +35,12 @@ def app():
     c = alt.Chart(overall).mark_circle().encode(
      x='Name', y='Overall score', size='Overall score', color='Overall score', tooltip=['Name', 'Overall score'])
     
-    alt.Chart(overall).mark_bar().encode(
+    b = alt.Chart(overall).mark_bar().encode(
         alt.X('Name:N', sort='-y'),
         alt.Y('Overall score:Q'))
     
 
-    #st.altair_chart(bar, use_container_width=True)
+    st.altair_chart(b, use_container_width=True)
     st.dataframe(overall)
 
     st.subheader('Intrinsic value')

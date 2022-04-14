@@ -30,7 +30,7 @@ def app():
     dividends = newdf[['Ticker','Name','Dividends']].sort_values(by=['Dividends'], ascending=False)
     overall = newdf[['Ticker','Name','Overall score']].sort_values(by=['Overall score'], ascending=False)
     frames = [overall,dividends]
-    divoverall = pd.concat(frames)
+    divoverall = pd.concat(frames, join='outer')
     c = alt.Chart(divoverall).mark_circle().encode(
      x='Dividends', y='Overall score', #size='Overall score', 
         #color='Overall score', 

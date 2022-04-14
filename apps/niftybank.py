@@ -24,7 +24,7 @@ def app():
  
 
     st.title('NiftyBank')
-    st.subheader('Nifty Bank, or Bank Nifty, is an index comprised of the most liquid and large capitalised Indian banking stocks.')
+    st.caption('Nifty Bank, or Bank Nifty, is an index comprised of the most liquid and large capitalised Indian banking stocks.')
 
     st.header('Overall scores')
     st.subheader('Overall score')

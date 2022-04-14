@@ -23,7 +23,7 @@ def app():
  
 
     st.title('Nifty50')
-    st.subheader('The NIFTY 50 is a benchmark Indian stock market index that represents the weighted average of 50 of the largest Indian companies listed on the National Stock Exchange.[1] It is one of the two main stock indices used in India, the other being the BSE SENSEX.')
+    st.caption('The NIFTY 50 is a benchmark Indian stock market index that represents the weighted average of 50 of the largest Indian companies listed on the National Stock Exchange.[1] It is one of the two main stock indices used in India, the other being the BSE SENSEX.')
 
     st.header('Overall scores')
     st.subheader('Overall score')

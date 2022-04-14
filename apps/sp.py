@@ -33,7 +33,7 @@ def app():
 
  
 
-    st.title('Stonkotracker 5000')
+    st.title('S&P 500')
 
     st.header('Overall scores')
     st.subheader('Overall score')

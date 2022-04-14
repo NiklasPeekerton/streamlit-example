@@ -34,8 +34,13 @@ def app():
     overall1 = overallgraph.to_dict()#.set_index('Name')
     c = alt.Chart(overall).mark_circle().encode(
      x='Name', y='Overall score', size='Overall score', color='Overall score', tooltip=['Name', 'Overall score'])
+    
+    bar = alt.Chart(overall).mark_bar().encode(
+    x='Name',
+    y='Overall score'
+)
 
-    st.altair_chart(c, use_container_width=True)
+    st.altair_chart(bar, use_container_width=True)
     st.dataframe(overall)
 
     st.subheader('Intrinsic value')

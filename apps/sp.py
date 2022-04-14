@@ -38,7 +38,7 @@ def app():
     
 
     st.altair_chart(c, use_container_width=True)
-    st.dataframe(overall)
+    st.dataframe(divoverall)
 
     st.subheader('Intrinsic value')
     st.caption('Out of 2')

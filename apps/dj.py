@@ -39,7 +39,6 @@ def app():
         alt.X('Name:N', sort='-y'),
         alt.Y('Overall score:Q'))
     
-)
 
     st.altair_chart(bar, use_container_width=True)
     st.dataframe(overall)

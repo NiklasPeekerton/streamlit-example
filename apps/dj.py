@@ -9,6 +9,7 @@ import numpy as np
 import streamlit as st
 from streamlit_option_menu import option_menu
 from data.data import read_data
+import altair as alt
 
 
 #with st.sidebar:
@@ -46,8 +47,11 @@ def app():
     st.subheader('Overall score')
     overall = newdf[['Ticker','Name','Overall score']].sort_values(by=['Overall score'], ascending=False)
     overallgraph = newdf[['Name','Overall score']].sort_values(by=['Overall score'], ascending=False)
-    overall1 = overallgraph.set_index('Name').sort_values(by=['Overall score'], ascending=False)
-    st.bar_chart(overall1)
+    overall1 = overallgraph.set_index('Name')
+    st.write(alt.Chart(overall1).mark_bar().encode(
+        x=alt.X('Name', sort=None),
+        y='Overall score',
+            ))
     st.dataframe(overall)
 
     st.subheader('Intrinsic value')

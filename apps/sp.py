@@ -36,8 +36,11 @@ def app():
         #color='Overall score', 
         tooltip=['Name', 'Overall score'])
     
+    stockscount = len(overall.index)
+    st.subheader(stockscount)
 
     st.altair_chart(c, use_container_width=True)
+    
     st.dataframe(divoverall)
 
     st.subheader('Intrinsic value')

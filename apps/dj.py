@@ -36,7 +36,7 @@ def app():
      x='Name', y='Overall score', size='Overall score', color='Overall score', tooltip=['Name', 'Overall score'])
 
     st.altair_chart(c, use_container_width=True)
-    st.dataframe(overall['Overall score'])
+    st.dataframe(overall)
 
     st.subheader('Intrinsic value')
     st.caption('Out of 2')

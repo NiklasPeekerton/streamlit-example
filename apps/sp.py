@@ -29,12 +29,11 @@ def app():
     st.subheader('Overall score')
     dividends = newdf[['Ticker','Name','Dividends']].sort_values(by=['Dividends'], ascending=False)
     overall = newdf[['Ticker','Name','Overall score']].sort_values(by=['Overall score'], ascending=False)
-    overall2 = overall[:20]
+    overall2 = overall[:100]
     divoverall = pd.merge(overall,dividends, on='Ticker')
-    c = alt.Chart(overall2).mark_circle().encode(
-     x='Name', y='Overall score', #size='Overall score', 
-        #color='Overall score', 
-        tooltip=['Name', 'Overall score'])
+    b = alt.Chart(overall2).mark_bar().encode(
+        alt.X('Name:N', sort='-y'),
+        alt.Y('Overall score:Q'))
     
     stockscount = len(overall.index)
     st.subheader(stockscount)

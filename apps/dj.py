@@ -12,27 +12,10 @@ from data.data import read_data
 import altair as alt
 
 
-#with st.sidebar:
-#    selected = option_menu("Main Menu", ["Home", 'Settings'], 
-#        icons=['house', 'gear'], menu_icon="cast", default_index=1)
-#    selected
-
-# horizontal menu
-#selected2 = option_menu(None, ["Home", "Upload", "Tasks", 'Settings'], 
-#    icons=['house', 'cloud-upload', "list-task", 'gear'], 
-#    menu_icon="cast", default_index=0, orientation="horizontal")
-#selected2
-
-
 sp_list = si.tickers_sp500()
 dow_list = si.tickers_dow()
 minilist = ['A', 'ACN']
 
-
-
-
-
-#TL = Financials[ticker]['yearly_income_statement'].loc['totalRevenue'][0]
 
 #@st.cache
 #def read_data():
@@ -48,10 +31,7 @@ def app():
     overall = newdf[['Ticker','Name','Overall score']].sort_values(by=['Overall score'], ascending=False)
     overallgraph = newdf[['Name','Overall score']].sort_values(by=['Overall score'], ascending=False)
     overall1 = overallgraph.set_index('Name')
-    st.write(alt.Chart(overall1).mark_bar().encode(
-        x=alt.X('Name', sort=None),
-        y='Overall score',
-            ))
+    st.plotly_chart(overall1, use_container_width=False, sharing="streamlit")
     st.dataframe(overall)
 
     st.subheader('Intrinsic value')

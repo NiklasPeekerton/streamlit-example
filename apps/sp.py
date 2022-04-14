@@ -27,7 +27,7 @@ dow_list = si.tickers_dow()
 minilist = ['A','AAPL','C','SSNC', 'GEO', 'CXW', 'ZION', 'GD', 'UHAL', 'GOLD', 'UFCS']
 
 
-
+@st.cache
 def app():
     newdf = read_data(sp_list)
 
@@ -38,6 +38,12 @@ def app():
     st.header('Overall scores')
     st.subheader('Overall score')
     overall = newdf[['Ticker','Name','Overall score']].sort_values(by=['Overall score'], ascending=False)
+    b = alt.Chart(overall).mark_bar().encode(
+        alt.X('Name:N', sort='-y'),
+        alt.Y('Overall score:Q'))
+    
+
+    st.altair_chart(b, use_container_width=True)
     st.dataframe(overall)
 
     st.subheader('Intrinsic value')

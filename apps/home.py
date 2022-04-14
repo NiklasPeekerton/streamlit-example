@@ -23,4 +23,8 @@ def app():
     #st.bar_chart(data=None, width=0, height=0, use_container_width=True)
 
     newdf = read_data(dow_list)
-    st.bar_chart(newdf)
+    overall = newdf[['Ticker','Name','Overall score']].sort_values(by=['Overall score'], ascending=False)
+    c = alt.Chart(overall).mark_circle().encode(
+     x='Name', y='Overall score', size='Overall score', color='Overall score', tooltip=['Name', 'Overall score'])
+
+    st.altair_chart(c, use_container_width=True)

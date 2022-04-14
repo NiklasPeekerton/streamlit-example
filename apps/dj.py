@@ -32,7 +32,7 @@ def app():
     overall = newdf[['Ticker','Name','Overall score']].sort_values(by=['Overall score'], ascending=False)
     overallgraph = newdf[['Name','Overall score']].sort_values(by=['Overall score'], ascending=False)
     overall1 = overallgraph.to_dict()#.set_index('Name')
-    st.plotly_chart(overall1, use_container_width=False, sharing="streamlit")
+    st.plotly_chart(overall1['Overall score'], use_container_width=False, sharing="streamlit")
     st.dataframe(overall)
 
     st.subheader('Intrinsic value')

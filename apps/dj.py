@@ -46,7 +46,7 @@ def app():
     st.subheader('Overall score')
     overall = newdf[['Ticker','Name','Overall score']].sort_values(by=['Overall score'], ascending=False)
     overall1 = overall.set_index('Overall score')
-    st.bar_chart(overall)
+    st.bar_chart(overall1)
     st.dataframe(overall)
 
     st.subheader('Intrinsic value')

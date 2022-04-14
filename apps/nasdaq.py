@@ -26,7 +26,7 @@ def app():
  
 
     st.title('Nasdaq')
-    st.subheader('The Nasdaq Stock Market is an American stock exchange based in New York City. It is ranked second on the list of stock exchanges by market capitalization of shares traded, behind the New York Stock Exchange. The exchange platform is owned by Nasdaq, Inc., which also owns the Nasdaq Nordic stock market network and several U.S.-based stock and options exchanges.')
+    st.caption('The Nasdaq Stock Market is an American stock exchange based in New York City. It is ranked second on the list of stock exchanges by market capitalization of shares traded, behind the New York Stock Exchange. The exchange platform is owned by Nasdaq, Inc., which also owns the Nasdaq Nordic stock market network and several U.S.-based stock and options exchanges.')
 
     st.header('Overall scores')
     st.subheader('Overall score')

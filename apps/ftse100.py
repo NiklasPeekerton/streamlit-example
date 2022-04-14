@@ -26,7 +26,7 @@ def app():
  
 
     st.title('FTSE 100')
-    st.subheader('The Financial Times Stock Exchange 100 Index, also called the FTSE 100 Index, FTSE 100, FTSE, or, informally, the "Footsie" /ˈfʊtsi/, is a share index of the 100 companies listed on the London Stock Exchange with (in principle) the highest market capitalisation. The index is maintained by the FTSE Group, a subsidiary of the London Stock Exchange Group.')
+    st.caption('The Financial Times Stock Exchange 100 Index, also called the FTSE 100 Index, FTSE 100, FTSE, or, informally, the "Footsie" /ˈfʊtsi/, is a share index of the 100 companies listed on the London Stock Exchange with (in principle) the highest market capitalisation. The index is maintained by the FTSE Group, a subsidiary of the London Stock Exchange Group.')
 
     st.header('Overall scores')
     st.subheader('Overall score')

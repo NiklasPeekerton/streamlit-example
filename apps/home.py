@@ -13,6 +13,8 @@ import streamlit as st
 from streamlit_option_menu import option_menu
 from data.data import read_data
 
+dow_list = si.tickers_dow()
+
 def app():
     st.title('Stonkotracker 3000')
 

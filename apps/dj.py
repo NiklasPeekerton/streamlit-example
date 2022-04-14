@@ -45,7 +45,7 @@ def app():
     st.header('Overall scores')
     st.subheader('Overall score')
     overall = newdf[['Ticker','Name','Overall score']].sort_values(by=['Overall score'], ascending=False)
-    overall1 = df.set_index(‘Overall score’)
+    overall1 = df.set_index('Overall score')
     st.bar_chart(overall)
     st.dataframe(overall)
 

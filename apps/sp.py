@@ -31,13 +31,13 @@ def app():
     overall = newdf[['Ticker','Name','Overall score']].sort_values(by=['Overall score'], ascending=False)
     frames = [overall,dividends]
     divoverall = pd.concat(frames)
-    b = alt.Chart(divoverall).mark_circle().encode(
-        alt.X('Overall score:Q'),
-        alt.Y('Dividends:Q')
-    )
+    c = alt.Chart(divoverall).mark_circle().encode(
+     x='Dividends', y='Overall score', #size='Overall score', 
+        #color='Overall score', 
+        tooltip=['Name', 'Overall score', 'Dividends'])
     
 
-    st.altair_chart(b, use_container_width=True)
+    st.altair_chart(c, use_container_width=True)
     st.dataframe(overall)
 
     st.subheader('Intrinsic value')

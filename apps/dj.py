@@ -37,7 +37,7 @@ def app():
     
     bar = alt.Chart(overall).mark_bar().encode(
     x='Name',
-    y='Overall score'
+    y=alt.Y('Overall score', sort='-x')
 )
 
     st.altair_chart(bar, use_container_width=True)

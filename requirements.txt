@@ -8,4 +8,4 @@ numpy
 streamlit_option_menu
 click==8
 plotly
-request
+requests

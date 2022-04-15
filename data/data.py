@@ -116,7 +116,7 @@ def read_data(tickerlist):
             if div.empty:
                 print(ticker, 'Has never had dividends')
                 DCAGR = 0
-            elif div.index.year[-1] == 2021:
+            elif div.index.year[-1] == 2022:
                 a = div.groupby(div.index.year).sum()
                 since2001 = a.loc[2001:]
                 DCAGR = ((((since2001.iloc[-1]/since2001.iloc[0])**(1/len(since2001.index))-1))+1)[0]

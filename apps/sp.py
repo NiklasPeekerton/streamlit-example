@@ -36,7 +36,7 @@ def app():
         alt.Y('Overall score:Q'))
     
     stockscount = len(overall.index)
-    st.subheader(stockscount)
+    st.metric(label="Number of stocks in this index", value=stockscount)
 
     st.altair_chart(c, use_container_width=True)
     

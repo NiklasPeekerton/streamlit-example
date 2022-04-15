@@ -32,8 +32,8 @@ def app():
     overall2 = overall[:100]
     divoverall = pd.merge(overall,dividends, on='Ticker')
     c = alt.Chart(overall2).mark_bar().encode(
-        alt.X('Name:O', sort='-y'),
-        alt.Y('Overall score:Q'))
+        alt.X('Overall score:Q'),
+        alt.Y('Name:O', sort='-x'))
     
     stockscount = len(overall.index)
     st.metric(label="Number of stocks in this index", value=stockscount)

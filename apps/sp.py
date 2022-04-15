@@ -32,7 +32,7 @@ def app():
     overall2 = overall[:100]
     divoverall = pd.merge(overall,dividends, on='Ticker')
     c = alt.Chart(overall2).mark_bar().encode(
-        alt.X('Name:N', sort='-y'),
+        alt.X('Name:O', sort='-y'),
         alt.Y('Overall score:Q'))
     
     stockscount = len(overall.index)

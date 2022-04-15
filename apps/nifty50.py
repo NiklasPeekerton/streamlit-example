@@ -28,6 +28,8 @@ def app():
     st.header('Overall scores')
     st.subheader('Overall score')
     overall = newdf[['Ticker','Name','Overall score']].sort_values(by=['Overall score'], ascending=False)
+    stockscount = len(overall.index)
+    st.metric(label="Number of stocks in this index", value=stockscount)
     st.dataframe(overall)
 
     st.subheader('Intrinsic value')

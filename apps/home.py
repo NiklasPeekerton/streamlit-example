@@ -31,9 +31,11 @@ def app():
     newdf = read_data(Dividendslist)
     overall = newdf[['Ticker','Name','Overall score']].sort_values(by=['Overall score'], ascending=False)
     stockscount = len(overall.index)
+    dividendscount = len(Dividendslist)
     st.metric(label="Number of stocks in this index", value=stockscount)
+    st.metric(label="Number of dividends in this index", value=dividendscount)
     top100 = overall[:100]
-    c = alt.Chart(overall).mark_circle().encode(
+    c = alt.Chart(top100).mark_circle().encode(
      x='Name', y='Overall score', size='Overall score', color='Overall score', tooltip=['Name', 'Overall score'])
 
     st.altair_chart(c, use_container_width=True)

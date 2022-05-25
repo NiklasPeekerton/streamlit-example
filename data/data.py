@@ -38,23 +38,23 @@ my_bar = st.progress(0)
 
 @st.cache
 def read_data(tickerlist):
-    dividend = 'https://drive.google.com/file/d/1vMx_yrSOO32oiLNTJtfClwSmYhQ2N63n/view?usp=sharing'
+    dividend = 'https://drive.google.com/file/d/1pzQ7Yd8CwiKV6uXM9oWuNFcEgCOKOyHS/view?usp=sharing'
     divpath = 'https://drive.google.com/uc?export=download&id='+dividend.split('/')[-2]
     divdict = pd.read_pickle(divpath)
     
-    earnings = 'https://drive.google.com/file/d/1qqL95LLUC25ZsYyDKUeXjVBBM8GECeFv/view?usp=sharing'
+    earnings = 'https://drive.google.com/file/d/1hq4T-m3L1yeRT-T5uQn1eXxWklsOjhH4/view?usp=sharing'
     earnpath = 'https://drive.google.com/uc?export=download&id='+earnings.split('/')[-2]
     earndict = pd.read_pickle(earnpath)
     
-    financials = 'https://drive.google.com/file/d/1tCcnaXTyXmUNqj8-09lbFF1n4QqZ5YCl/view?usp=sharing'
+    financials = 'https://drive.google.com/file/d/1JBcACt4lqgJHJ3arFdg_QzV9RpYcvsap/view?usp=sharing'
     finpath = 'https://drive.google.com/uc?export=download&id='+financials.split('/')[-2]
     findict = pd.read_pickle(finpath)
     
-    price = 'https://drive.google.com/file/d/1LoWSRVSOq-Ib8lwTebFw6o83t32RHZWc/view?usp=sharing'
+    price = 'https://drive.google.com/file/d/1V5fwQd-x1UIpEk204qhpVvOdhKOaPySD/view?usp=sharing'
     pricepath = 'https://drive.google.com/uc?export=download&id='+price.split('/')[-2]
     pricedict = pd.read_pickle(pricepath)
     
-    quote = 'https://drive.google.com/file/d/1Uxs2tXhCA8GMoMzAqnzB_JoymwaEmThU/view?usp=sharing'
+    quote = 'https://drive.google.com/file/d/1m39lVdvZy1TRmYhrM6VZHzDhHh-v5IQt/view?usp=sharing'
     quotepath = 'https://drive.google.com/uc?export=download&id='+quote.split('/')[-2]
     quoteedict = pd.read_pickle(quotepath)
 

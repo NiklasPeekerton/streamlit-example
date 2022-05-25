@@ -10,7 +10,7 @@ from apps import ftse100
 from apps import ftse250
 from apps import nifty50
 from apps import niftybank
-from apps import ibovespa
+from apps import sp1500
 
 
 

@@ -18,16 +18,19 @@ sp_list = si.tickers_sp500()
 dow_list = si.tickers_dow()
 ibovespa = si.tickers_ibovespa()
 minilist = ['A','AAPL','C','SSNC', 'GEO', 'CXW', 'ZION', 'GD', 'UHAL', 'GOLD', 'UFCS']
-
+sap1500 = 'https://drive.google.com/file/d/1j6WU02YzQGXWzMVqxtjx2bXkpnF5BGQU/view?usp=sharing'
+sp1500path = 'https://drive.google.com/uc?export=download&id='+sap1500.split('/')[-2]
+sp1500 = pd.read_csv(sp1500path)
+sp1500list = sp1500['Tickers'].values.tolist()
 
 
 def app():
-    newdf = read_data(ibovespa)
+    newdf = read_data(sp1500list)
 
  
 
-    st.title('IBOVESPA')
-    st.caption('The Bovespa Index, best known as Ibovespa is the benchmark index of about 84 stocks traded on the B3, accounting for the majority of trading and market capitalization in the Brazilian stock market. It is weighted measurement index.')
+    st.title('S&P 1500')
+    st.caption('The S&P 1500, or S&P Composite 1500 Index, is a stock market index of US stocks made by Standard & Poors. It includes all stocks in the S&P 500, S&P 400, and S&P 600. This index covers approximately 90% of the market capitalization of U.S. stocks.')
 
     st.header('Overall scores')
     st.subheader('Overall score')

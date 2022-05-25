@@ -30,7 +30,7 @@ apps.add_app("FTSE 100", ftse100.app)
 apps.add_app("FTSE 250", ftse250.app)
 apps.add_app("NIFTY 50", nifty50.app)
 apps.add_app("NIFTY bank", niftybank.app)
-apps.add_app("IBOVESPA", ibovespa.app)
+apps.add_app("S&P 1500", sp1500.app)
 apps.add_app("Data test", data_test.app)
 
 

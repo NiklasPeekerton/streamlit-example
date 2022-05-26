@@ -65,6 +65,14 @@ def read_data(tickerlist):
     keysQ = ['longName', 'regularMarketPrice', 'trailingPE', 'sharesOutstanding', 'fiftyTwoWeekRange', 'epsTrailingTwelveMonths', 'bookValue', 'priceToBook', 'trailingAnnualDividendRate', 'trailingAnnualDividendYield']
 
     haba = []
+    
+    def divzero(x,y):
+    try:
+        #print('division success')
+        return x/y
+    except ZeroDivisionError:
+        #print('division fail')
+        return 0
 
     yearnow = pd.Timestamp.now().year
     for ticker in tickerlist:
@@ -188,13 +196,18 @@ def read_data(tickerlist):
 
             #3-Year Normalized: Earnings-per-share / Book Value per share
             #avgeps3norm
-            BVPS = (TA3-TL3).mean()/SO
-            EPS3BVPS3 = avgeps3norm/ BVPS
+            BVPS = divzero((TA3-TL3).mean(),SO)
+            EPS3BVPS3 = divzero(avgeps3norm, BVPS)
             #EPS3BVPS3
 
             #([Payout/Earnings] / Dividend Yield) / 25
-            PEDY25 = ((ADR/ETTM)/ADY)/25
-            #Earndf
+            if ADR == None or 0.0:
+                PEDY25 = 0
+                print(ticker, 'has no dividend')
+            else:
+                divepstrail = divzero(ADR,ETTM)
+                divepstrailyield = divzero(divepstrail,ADY)
+                PEDY25 = divzero(divepstrailyield,25)
 
             #[Highest P/E] / [lowest P/E] (considering the past 4 years)
             price = pricedict[ticker]
@@ -206,7 +219,7 @@ def read_data(tickerlist):
 
             PEepssum = pricemean['close']/sumeps5['EPS']
 
-            highlowPE = PEepssum.max()/PEepssum.min()
+            highlowPE = divzero(PEepssum.max(),PEepssum.min())
 
             PEsummax = PEepssum.max()
 

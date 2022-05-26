@@ -67,12 +67,12 @@ def read_data(tickerlist):
     haba = []
     
     def divzero(x,y):
-    try:
-        #print('division success')
-        return x/y
-    except ZeroDivisionError:
-        #print('division fail')
-        return 0
+        try:
+            #print('division success')
+            return x/y
+        except ZeroDivisionError:
+            #print('division fail')
+            return 0
 
     yearnow = pd.Timestamp.now().year
     for ticker in tickerlist:

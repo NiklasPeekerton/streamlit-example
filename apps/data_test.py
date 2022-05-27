@@ -22,10 +22,14 @@ def app():
     path = 'https://drive.google.com/uc?export=download&id='+url.split('/')[-2]
     df = pd.read_pickle(path)
 
-    #metrics1 = habadf
-    metrics2 = newdf
+    dividend = 'https://drive.google.com/file/d/150UDrwhVd3hH0nwU1Y0IptwlYIu5akR4/view?usp=sharing'
+    divpath = 'https://drive.google.com/uc?export=download&id='+dividend.split('/')[-2]
+    divdict = pd.read_pickle(divpath)
+    Dividendslist = list(divdict.keys())
+
+    newdf = read_data(Dividendslist)
     
     
     #st.dataframe(habadf)
-    st.dataframe(metrics2)
+    st.dataframe(newdf)
     

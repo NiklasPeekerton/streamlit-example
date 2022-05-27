@@ -27,5 +27,5 @@ def app():
     
     
     #st.dataframe(habadf)
-    st.dataframe(newdf)
+    st.dataframe(metrics2)
     

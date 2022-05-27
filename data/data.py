@@ -373,5 +373,5 @@ def read_data(tickerlist):
     newdf['Overall score'] = newdf['Financial situation'] + newdf['Earnings'] + newdf['Dividends'] #+ newdf['Relative price'] + newdf['Intrinsic value']
 
 
-    return(newdf)
+    return(newdf, habadf)
 

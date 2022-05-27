@@ -33,8 +33,8 @@ ruslist = Russell3000['Ticker'].values.tolist()
 
 
 def app():
-    newdf = read_data(ruslist)
-
+    result = read_data(ruslist)
+    newdf = result[0]
  
 
     st.title('Stonkotracker 5000')

@@ -1,10 +1,19 @@
 import streamlit as st
-import numpy as np
 import pandas as pd
-from data.data import read_data
-import pickle
-import pathlib
+import numpy as np
+from apps import dj
 from yahoo_fin import stock_info as si
+from tqdm.notebook import trange, tqdm
+import pickle
+import streamlit as st
+from datetime import datetime
+import pandas as pd
+import numpy as np
+import streamlit as st
+from streamlit_option_menu import option_menu
+from data.data import read_data
+import altair as alt
+import plotly.tools
 
 minilist = ['A', 'ACN', 'VLO', 'AMC', 'GME', 'AAPL']
 sp_list = si.tickers_sp500()

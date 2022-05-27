@@ -22,9 +22,9 @@ dow_list = si.tickers_dow()
 
 def app():
 
-    st.title('Testing data fetch/read')
+    st.title('Testing page for experiment purposes')
 
-    st.write("Should contain data from dowjones stocks at the moment")
+    
 
     #st.markdown("### Plot Data")
     url = 'https://drive.google.com/file/d/1kg1cFbunr7qwoKm1QPYA38s0RnQd280W/view?usp=sharing'
@@ -40,5 +40,9 @@ def app():
     
     
     #st.dataframe(habadf)
+    st.write("Calculated values")
     st.dataframe(result[0])
+    
+    st.write("Main metrics")
+    st.dataframe(result[1])
     

@@ -28,7 +28,8 @@ def app():
     divdict = pd.read_pickle(divpath)
     Dividendslist = list(divdict.keys())
 
-    newdf = read_data(Dividendslist)
+    result = read_data(Dividendslist)
+    newdf = result[0]
     overall = newdf[['Ticker','Name','Overall score']].sort_values(by=['Overall score'], ascending=False)
     overall2 = overall[:100]
     #divoverall = pd.merge(overall,dividends, on='Ticker')

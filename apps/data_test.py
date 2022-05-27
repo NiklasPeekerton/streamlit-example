@@ -36,9 +36,9 @@ def app():
     divdict = pd.read_pickle(divpath)
     Dividendslist = list(divdict.keys())
 
-    newdf = read_data(Dividendslist)
+    result = read_data(Dividendslist)
     
     
     #st.dataframe(habadf)
-    st.dataframe(newdf)
+    st.dataframe(result[0])
     

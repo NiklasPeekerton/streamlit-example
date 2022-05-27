@@ -22,10 +22,10 @@ def app():
     path = 'https://drive.google.com/uc?export=download&id='+url.split('/')[-2]
     df = pd.read_pickle(path)
 
-    metrics1 = habadf
+    #metrics1 = habadf
     metrics2 = newdf
     
     
-    st.dataframe(habadf)
+    #st.dataframe(habadf)
     st.dataframe(newdf)
     

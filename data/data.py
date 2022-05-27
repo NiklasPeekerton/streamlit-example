@@ -361,7 +361,7 @@ def read_data(tickerlist):
     newdf['Financial situation'] = newdf['CurAss/2*CurLiab'] + newdf['NCAV/TotDebt/1.1'] + newdf['NormEarn/7*InterestPay'] + newdf['AllAss-AllLiab/AllLiab'] + newdf['Working capital / Long Term (non-current) debt']  + newdf['Total Revenue / Mean']#+ newdf['Years since most recent loss /5']
 
     #Earnings
-    newdf['Earnings'] = newdf['(4 - [Number of last 4 years with an earnings decline]) / 4'] + newdf['Earnings to price yield / [2 * AAA bond rate]'] + habadf['3-Year Normalized: Earnings-per-share / Book Value per share']
+    newdf['Earnings'] = newdf['(4 - [Number of last 4 years with an earnings decline]) / 4'] + habadf['3-Year Normalized: Earnings-per-share / Book Value per share']# + newdf['Earnings to price yield / [2 * AAA bond rate]']
 
     #Dividends
     newdf['Dividends'] = newdf['Total uninterrupted years with dividend/10'] + newdf['Dividend CAGR past 20y']# + newdf['Dividend Yield / 0.02'] + newdf['AAA bond yield / 1.5 x Dividend Yield'] + habadf['([Payout/Earnings] / Dividend Yield) / 25']
@@ -370,7 +370,7 @@ def read_data(tickerlist):
     newdf['Relative price'] = newdf['15 / (P/E)'] + habadf['[Highest P/E] / [lowest P/E] (considering the past 4 years)'] + newdf['yearlowhigh'] + newdf['twentydivPE'] + newdf['MA/(P/E)']# + habadf['currhighPE']
 
     #Overall score
-    newdf['Overall score'] = newdf['Intrinsic value'] + newdf['Financial situation'] + newdf['Earnings'] + newdf['Dividends'] #+ newdf['Relative price']
+    newdf['Overall score'] = newdf['Financial situation'] + newdf['Earnings'] + newdf['Dividends'] #+ newdf['Relative price'] + newdf['Intrinsic value']
 
 
     return(newdf)
